@@ -84,20 +84,19 @@ flags = [
     extract_obs('livparnt', 'lives_with_parents'),
     extract_obs('fampsic', 'family_hx_psychosis'),
     
-    # Hospitalization: Checks 8715 FIRST, falls back to source string
+    # Hospitalization: Correctly uses numerical Concept IDs
     extract_obs('hospita', 'hospital_admission', {8715.0: 'Admitted', 44792129.0: 'Avoided', 'hospita-1.0': 'Admitted', 'hospita-2.0': 'Avoided'}),
     
-    # Education: Checks 1620732 FIRST, falls back to source string
+    # Education: Correctly handles IDs for Primary/High School
     extract_obs('educlvl', 'education', {1620732.0: 'Primary School', 1620880.0: 'High School', 'educlvl-1.0': 'Primary School', 'educlvl-2.0': 'High School'}),
     
-    # SES: Pulls raw data from the value_as_string field
+    # SES: Uses the exact lowercase strings found in the 'value_as_string' field
     extract_obs('seclvl', 'socioeconomic_status', {'low': 'Low', 'medium or higher': 'Medium/Higher'}, use_string_col=True),
     
-    # Employment: Using the unempl source variable
-    extract_obs('unempl', 'employment', {'unempl-2.0': 'Employed/Active', 'unempl-1.0': 'Unemployed/Inactive'}),
+    # Employment
+    extract_obs('active0', 'employment', {9181.0: 'Active (Work/Study)', 9177.0: 'Inactive/Other'}),
     
-    # Marital Status
-    extract_obs('single', 'marital_status', {3046344.0: 'Single', 45879879.0: 'Married/Partnered', 'single-1.0': 'Single', 'single-2.0': 'Married/Partnered'})
+    extract_obs('single', 'marital_status', {45879879.0: 'Single', 45876756.0: 'Married', 'single-1.0': 'Single', 'single-2.0': 'Married'})
 ]
 
 for flag_df in flags:

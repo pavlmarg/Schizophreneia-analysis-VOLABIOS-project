@@ -277,3 +277,36 @@ for p in ax10[1].patches:
 save_fig(fig10, 'uni_fig10_outcomes.png')
 
 print("Success! 10 figures have been generated in 'data_processed/results_univ'.")
+
+# ==========================================
+# 6. EXPORT STATISTICAL TABLES
+# ==========================================
+output_tables_dir = 'data_processed/results_univ/tables'
+os.makedirs(output_tables_dir, exist_ok=True)
+
+cat_list = []
+for var in categorical_vars:
+    counts = df[var].value_counts(dropna=False)
+    pcts = df[var].value_counts(normalize=True, dropna=False) * 100
+    
+    summary = pd.DataFrame({
+        'Variable': var,
+        'Category': counts.index,
+        'Count (n)': counts.values,
+        'Percentage (%)': pcts.values.round(2)
+    })
+    cat_list.append(summary)
+
+final_categorical_table = pd.concat(cat_list)
+final_categorical_table.to_csv(os.path.join(output_tables_dir, 'table_1_categorical.csv'), index=False)
+
+# B. Numerical Table (Mean, Std Dev, Min, Max, etc.)
+# The .describe() method provides the N, mean, std, min, 25%, 50%, 75%, and max
+numerical_summary = df[num_cols].describe().T.round(2)
+
+# Adding Variance specifically as it is often required for clinical variance checks
+numerical_summary['variance'] = df[num_cols].var().round(2)
+
+numerical_summary.to_csv(os.path.join(output_tables_dir, 'table_2_numerical.csv'))
+
+print(f"\nStatistical tables have been exported to: {output_tables_dir}/")

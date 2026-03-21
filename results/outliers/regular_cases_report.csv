@@ -1,0 +1,47 @@
+person_id,Variable,Value,Severity,diagnosis,recovery_status
+7,DAT_months,18.26694045,Regular,Schizophrenia,Not recovered
+36,SANS_Total,25.0,Regular,Schizophreniform,Not recovered
+41,DAP_months,48.65708419,Regular,Schizophrenia,Not recovered
+41,DUP_months,48.0,Regular,Schizophrenia,Not recovered
+58,DUP_months,36.0,Regular,Schizophrenia,Recovered
+59,DAT_months,18.98973306,Regular,Schizophrenia,Not recovered
+62,DAT_months,17.0513347,Regular,Schizophrenia,Not recovered
+85,DUP_months,36.0,Regular,Schizophrenia,Recovered
+101,DAT_months,14.06160164,Regular,Schizophreniform,Not recovered
+140,DUP_months,45.0,Regular,Schizophrenia,Not recovered
+145,DUP_months,36.0,Regular,Schizophrenia,Recovered
+152,DUP_months,36.0,Regular,Schizophrenia,Recovered
+208,DUP_months,36.0,Regular,Schizophrenia,Recovered
+208,SANS_Total,25.0,Regular,Schizophrenia,Recovered
+317,DUI_months,96.0,Regular,Schizophrenia,Recovered
+329,BPRS_Total,106.0,Regular,Schizophreniform,Recovered
+348,DAT_months,21.02669405,Regular,Schizophreniform,Not recovered
+351,DUI_months,92.0,Regular,Schizophrenia,Not recovered
+358,BPRS_Total,99.0,Regular,Schizophrenia,Not recovered
+358,DUI_months,96.0,Regular,Schizophrenia,Not recovered
+358,DUP_months,36.0,Regular,Schizophrenia,Not recovered
+382,baseline_age,53.0,Regular,Schizophrenia,Not recovered
+391,baseline_age,58.0,Regular,Schizophrenia,Not recovered
+394,DAT_months,19.71252567,Regular,Schizophrenia,Not recovered
+414,DAT_months,17.21560575,Regular,Schizophrenia,Not recovered
+426,DUP_months,36.0,Regular,Schizophrenia,Recovered
+428,DUP_months,36.0,Regular,Schizophrenia,Not recovered
+12,DAP_months,47.75564682,Regular,Schizophrenia,
+12,DUP_months,47.0,Regular,Schizophrenia,
+43,DUP_months,36.0,Regular,Schizophrenia,
+46,DUI_months,120.0,Regular,Schizophrenia,
+49,DAP_months,49.24845996,Regular,Schizophrenia,
+49,DUP_months,48.0,Regular,Schizophrenia,
+69,DAT_months,14.22587269,Regular,Schizophreniform,
+71,DUP_months,36.0,Regular,Schizophrenia,
+74,DAT_months,16.49281314,Regular,Schizophrenia,
+93,DAT_months,15.86858316,Regular,Schizophrenia,
+94,DUP_months,36.0,Regular,Schizophrenia,
+123,DAT_months,17.70841889,Regular,Schizophrenia,
+133,baseline_age,56.0,Regular,Schizophrenia,
+150,DAP_months,51.27720739,Regular,Non-organic psychosis,
+150,DAT_months,15.27720739,Regular,Non-organic psychosis,
+150,DUP_months,36.0,Regular,Non-organic psychosis,
+163,BPRS_Total,95.0,Regular,Schizophrenia,
+202,DUP_months,36.0,Regular,Schizophrenia,
+384,DAT_months,20.66529774,Regular,Schizophrenia,

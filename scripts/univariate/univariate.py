@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 import warnings
-warnings.filterwarnings('ignore') # Keeps the console output clean
+warnings.filterwarnings('ignore') 
 
 # ==========================================
 # 1. SETUP & PATHS
@@ -301,10 +301,9 @@ final_categorical_table = pd.concat(cat_list)
 final_categorical_table.to_csv(os.path.join(output_tables_dir, 'table_1_categorical.csv'), index=False)
 
 # B. Numerical Table (Mean, Std Dev, Min, Max, etc.)
-# The .describe() method provides the N, mean, std, min, 25%, 50%, 75%, and max
+
 numerical_summary = df[num_cols].describe().T.round(2)
 
-# Adding Variance specifically as it is often required for clinical variance checks
 numerical_summary['variance'] = df[num_cols].var().round(2)
 
 numerical_summary.to_csv(os.path.join(output_tables_dir, 'table_2_numerical.csv'))

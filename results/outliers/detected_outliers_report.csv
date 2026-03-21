@@ -1,0 +1,109 @@
+person_id,Variable,Value,Outlier_Type,diagnosis,recovery_status
+7,DAT_months,18.26694045,Regular Outlier,Schizophrenia,Not recovered
+12,DAP_months,47.75564682,Regular Outlier,Schizophrenia,
+12,DUP_months,47.0,Regular Outlier,Schizophrenia,
+15,DAT_months,27.66324435,Extreme Outlier,Schizophrenia,
+35,DAT_months,24.64065708,Extreme Outlier,Schizophrenia,Recovered
+36,SANS_Total,25.0,Regular Outlier,Schizophreniform,Not recovered
+41,DAP_months,48.65708419,Regular Outlier,Schizophrenia,Not recovered
+41,DUP_months,48.0,Regular Outlier,Schizophrenia,Not recovered
+42,DAP_months,125.9137577,Extreme Outlier,Schizophrenia,
+42,DUI_months,210.0,Extreme Outlier,Schizophrenia,
+42,DUP_months,120.0,Extreme Outlier,Schizophrenia,
+43,DUP_months,36.0,Regular Outlier,Schizophrenia,
+45,DAP_months,206.4640657,Extreme Outlier,Schizophrenia,Recovered
+45,DUI_months,204.0,Extreme Outlier,Schizophrenia,Recovered
+45,DUP_months,204.0,Extreme Outlier,Schizophrenia,Recovered
+46,DUI_months,120.0,Regular Outlier,Schizophrenia,
+49,DAP_months,49.24845996,Regular Outlier,Schizophrenia,
+49,DUP_months,48.0,Regular Outlier,Schizophrenia,
+58,DUP_months,36.0,Regular Outlier,Schizophrenia,Recovered
+59,DAT_months,18.98973306,Regular Outlier,Schizophrenia,Not recovered
+62,DAT_months,17.0513347,Regular Outlier,Schizophrenia,Not recovered
+65,DAT_months,29.5687885,Extreme Outlier,Schizophrenia,
+69,DAT_months,14.22587269,Regular Outlier,Schizophreniform,
+71,DUP_months,36.0,Regular Outlier,Schizophrenia,
+74,DAT_months,16.49281314,Regular Outlier,Schizophrenia,
+85,DUP_months,36.0,Regular Outlier,Schizophrenia,Recovered
+88,DAP_months,184.7638604,Extreme Outlier,Schizophrenia,
+88,DUI_months,180.0,Extreme Outlier,Schizophrenia,
+88,DUP_months,180.0,Extreme Outlier,Schizophrenia,
+88,baseline_age,57.0,Regular Outlier,Schizophrenia,
+93,DAT_months,15.86858316,Regular Outlier,Schizophrenia,
+94,DUP_months,36.0,Regular Outlier,Schizophrenia,
+101,DAT_months,14.06160164,Regular Outlier,Schizophreniform,Not recovered
+102,DAP_months,74.26694045,Extreme Outlier,Schizophrenia,
+102,DUI_months,120.0,Regular Outlier,Schizophrenia,
+102,DUP_months,72.0,Extreme Outlier,Schizophrenia,
+115,DAP_months,211.7125257,Extreme Outlier,Schizophrenia,Not recovered
+115,DAT_months,19.71252567,Regular Outlier,Schizophrenia,Not recovered
+115,DUI_months,192.0,Extreme Outlier,Schizophrenia,Not recovered
+115,DUP_months,192.0,Extreme Outlier,Schizophrenia,Not recovered
+123,DAT_months,17.70841889,Regular Outlier,Schizophrenia,
+133,baseline_age,56.0,Regular Outlier,Schizophrenia,
+140,DUP_months,45.0,Regular Outlier,Schizophrenia,Not recovered
+142,DAT_months,21.97946612,Extreme Outlier,Schizophrenia,Not recovered
+145,DUP_months,36.0,Regular Outlier,Schizophrenia,Recovered
+146,DAP_months,65.05954825,Regular Outlier,Schizophrenia,
+146,DUP_months,60.0,Extreme Outlier,Schizophrenia,
+150,DAP_months,51.27720739,Regular Outlier,Non-organic psychosis,
+150,DAT_months,15.27720739,Regular Outlier,Non-organic psychosis,
+150,DUP_months,36.0,Regular Outlier,Non-organic psychosis,
+152,DUP_months,36.0,Regular Outlier,Schizophrenia,Recovered
+158,DAP_months,87.51540041,Extreme Outlier,Schizophrenia,
+158,DUP_months,84.0,Extreme Outlier,Schizophrenia,
+163,BPRS_Total,95.0,Regular Outlier,Schizophrenia,
+165,DAP_months,63.28542094,Regular Outlier,Schizophrenia,Not recovered
+165,DUP_months,60.0,Extreme Outlier,Schizophrenia,Not recovered
+168,DAP_months,81.36344969,Extreme Outlier,Schizophrenia,
+168,DUP_months,72.0,Extreme Outlier,Schizophrenia,
+173,DAP_months,79.42710472,Extreme Outlier,Schizophrenia,Not recovered
+173,DUP_months,79.0,Extreme Outlier,Schizophrenia,Not recovered
+202,DUP_months,36.0,Regular Outlier,Schizophrenia,
+208,DUP_months,36.0,Regular Outlier,Schizophrenia,Recovered
+208,SANS_Total,25.0,Regular Outlier,Schizophrenia,Recovered
+301,DAP_months,60.67351129,Regular Outlier,Schizophrenia,
+301,DAT_months,24.67351129,Extreme Outlier,Schizophrenia,
+301,DUI_months,180.0,Extreme Outlier,Schizophrenia,
+301,DUP_months,36.0,Regular Outlier,Schizophrenia,
+311,DUI_months,276.0,Extreme Outlier,Schizophrenia,
+316,DAP_months,63.1211499,Regular Outlier,Non-organic psychosis,
+316,DUP_months,60.0,Extreme Outlier,Non-organic psychosis,
+317,DUI_months,96.0,Regular Outlier,Schizophrenia,Recovered
+329,BPRS_Total,106.0,Regular Outlier,Schizophreniform,Recovered
+341,DAP_months,148.4353183,Extreme Outlier,Schizophrenia,
+341,DUI_months,144.0,Extreme Outlier,Schizophrenia,
+341,DUP_months,144.0,Extreme Outlier,Schizophrenia,
+348,DAT_months,21.02669405,Regular Outlier,Schizophreniform,Not recovered
+349,DUI_months,144.0,Extreme Outlier,Schizophrenia,Not recovered
+351,DUI_months,92.0,Regular Outlier,Schizophrenia,Not recovered
+358,BPRS_Total,99.0,Regular Outlier,Schizophrenia,Not recovered
+358,DUI_months,96.0,Regular Outlier,Schizophrenia,Not recovered
+358,DUP_months,36.0,Regular Outlier,Schizophrenia,Not recovered
+359,BPRS_Total,100.0,Regular Outlier,Schizophrenia,Not recovered
+359,DAP_months,101.026694,Extreme Outlier,Schizophrenia,Not recovered
+359,DUI_months,96.0,Regular Outlier,Schizophrenia,Not recovered
+359,DUP_months,96.0,Extreme Outlier,Schizophrenia,Not recovered
+362,DAP_months,55.4825462,Regular Outlier,Schizophrenia,
+362,DAT_months,19.4825462,Regular Outlier,Schizophrenia,
+362,DUI_months,288.0,Extreme Outlier,Schizophrenia,
+362,DUP_months,36.0,Regular Outlier,Schizophrenia,
+366,DAP_months,60.72279261,Regular Outlier,Schizophrenia,Not recovered
+366,DUP_months,60.0,Extreme Outlier,Schizophrenia,Not recovered
+382,baseline_age,53.0,Regular Outlier,Schizophrenia,Not recovered
+384,DAT_months,20.66529774,Regular Outlier,Schizophrenia,
+391,baseline_age,58.0,Regular Outlier,Schizophrenia,Not recovered
+394,DAT_months,19.71252567,Regular Outlier,Schizophrenia,Not recovered
+404,DAT_months,30.19301848,Extreme Outlier,Schizophrenia,Not recovered
+405,DAT_months,38.275154,Extreme Outlier,Schizophrenia,Not recovered
+406,DAT_months,37.35523614,Extreme Outlier,Schizophrenia,Not recovered
+410,DAP_months,162.5831622,Extreme Outlier,Schizophrenia,
+410,DUI_months,150.0,Extreme Outlier,Schizophrenia,
+410,DUP_months,150.0,Extreme Outlier,Schizophrenia,
+414,DAT_months,17.21560575,Regular Outlier,Schizophrenia,Not recovered
+426,DUP_months,36.0,Regular Outlier,Schizophrenia,Recovered
+427,DAP_months,242.661191,Extreme Outlier,Schizophrenia,
+427,DUI_months,240.0,Extreme Outlier,Schizophrenia,
+427,DUP_months,240.0,Extreme Outlier,Schizophrenia,
+427,baseline_age,60.0,Regular Outlier,Schizophrenia,
+428,DUP_months,36.0,Regular Outlier,Schizophrenia,Not recovered

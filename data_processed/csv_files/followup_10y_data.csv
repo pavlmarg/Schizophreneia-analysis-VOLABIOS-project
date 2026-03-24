@@ -1,0 +1,210 @@
+person_id,BPRS_Negative_10y,BPRS_Positive_10y,BPRS_Total_10y,SANS_Total_10y,SAPS_Total_10y,active_10y,recovery_status_10y,DAS_Global_10y
+1,5.0,0.0,26.0,5.0,0.0,Active,Recovered,1.0
+2,5.0,0.0,30.0,5.0,0.0,Inactive,Not recovered,2.0
+3,5.0,1.0,30.0,7.0,1.0,Inactive,Not recovered,2.0
+4,3.0,2.0,31.0,3.0,2.0,Inactive,Not recovered,2.0
+5,11.0,5.0,38.0,11.0,10.0,Inactive,Not recovered,4.0
+6,2.0,1.0,25.0,2.0,1.0,Inactive,Not recovered,1.0
+7,11.0,4.0,39.0,11.0,4.0,Inactive,Not recovered,2.0
+8,2.0,0.0,27.0,4.0,0.0,Inactive,Not recovered,2.0
+9,4.0,0.0,24.0,4.0,0.0,Inactive,Not recovered,1.0
+10,4.0,2.0,43.0,6.0,4.0,Inactive,Not recovered,3.0
+11,0.0,0.0,26.0,0.0,0.0,Active,Recovered,0.0
+14,2.0,0.0,26.0,2.0,0.0,Inactive,Not recovered,0.0
+16,3.0,0.0,34.0,4.0,2.0,Inactive,Not recovered,1.0
+18,0.0,0.0,26.0,0.0,0.0,Inactive,Not recovered,0.0
+19,4.0,0.0,31.0,4.0,0.0,Inactive,Not recovered,0.0
+21,1.0,0.0,25.0,1.0,0.0,Inactive,Not recovered,0.0
+22,14.0,0.0,51.0,17.0,0.0,Inactive,Not recovered,4.0
+24,0.0,0.0,37.0,0.0,0.0,Active,Recovered,0.0
+25,2.0,0.0,30.0,2.0,0.0,Active,Recovered,1.0
+26,2.0,0.0,28.0,4.0,3.0,Inactive,Not recovered,2.0
+29,3.0,0.0,28.0,3.0,0.0,Active,Recovered,0.0
+30,,,,,,Inactive,,
+31,6.0,3.0,38.0,8.0,6.0,Active,Recovered,0.0
+32,7.0,0.0,34.0,7.0,0.0,Inactive,Not recovered,1.0
+33,,,,,,Active,,
+35,3.0,0.0,30.0,4.0,0.0,Active,Recovered,0.0
+36,3.0,0.0,36.0,3.0,2.0,Inactive,Not recovered,2.0
+38,2.0,0.0,26.0,2.0,1.0,Inactive,Not recovered,0.0
+40,1.0,0.0,24.0,1.0,0.0,Inactive,Not recovered,0.0
+41,8.0,0.0,33.0,10.0,0.0,Inactive,Not recovered,0.0
+43,,,,,,Inactive,,
+44,4.0,0.0,24.0,4.0,0.0,Inactive,Not recovered,3.0
+45,9.0,3.0,44.0,12.0,3.0,Active,Recovered,1.0
+47,3.0,0.0,28.0,3.0,0.0,Inactive,Not recovered,1.0
+49,,,,,,Active,,
+50,0.0,0.0,30.0,0.0,0.0,Inactive,Not recovered,0.0
+51,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+52,3.0,0.0,26.0,3.0,0.0,Inactive,Not recovered,1.0
+53,5.0,0.0,29.0,5.0,0.0,Inactive,Not recovered,2.0
+54,14.0,5.0,47.0,16.0,9.0,Inactive,Not recovered,3.0
+55,,,,,,Inactive,,
+57,8.0,0.0,27.0,10.0,0.0,Inactive,Not recovered,1.0
+58,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+59,16.0,5.0,58.0,16.0,9.0,Inactive,Not recovered,4.0
+60,0.0,0.0,25.0,0.0,0.0,Inactive,Not recovered,0.0
+61,,,,,,Inactive,,
+62,8.0,0.0,39.0,10.0,0.0,Inactive,Not recovered,3.0
+63,0.0,0.0,25.0,0.0,0.0,Active,Recovered,0.0
+67,11.0,7.0,57.0,11.0,9.0,Inactive,Not recovered,3.0
+68,3.0,0.0,42.0,3.0,0.0,Inactive,Not recovered,1.0
+69,,,,,,Inactive,,
+70,1.0,0.0,25.0,1.0,0.0,Active,Recovered,0.0
+71,,,,,,Inactive,,
+72,4.0,0.0,26.0,4.0,0.0,Inactive,Not recovered,2.0
+73,11.0,8.0,46.0,14.0,14.0,Inactive,Not recovered,3.0
+76,4.0,0.0,36.0,4.0,0.0,Active,Recovered,1.0
+77,19.0,9.0,67.0,23.0,15.0,,,
+78,,,,,,Inactive,,
+80,2.0,0.0,24.0,2.0,0.0,,,
+81,7.0,0.0,32.0,7.0,0.0,Inactive,Not recovered,2.0
+82,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+83,2.0,0.0,25.0,2.0,0.0,Inactive,Not recovered,1.0
+85,4.0,0.0,26.0,4.0,0.0,Active,Recovered,1.0
+89,2.0,1.0,29.0,2.0,1.0,Inactive,Not recovered,0.0
+92,,,,,,Active,,
+95,3.0,0.0,27.0,5.0,0.0,Active,Recovered,0.0
+96,0.0,2.0,34.0,0.0,3.0,Active,Recovered,0.0
+99,,,,,,Inactive,,
+100,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+101,7.0,3.0,32.0,8.0,3.0,Inactive,Not recovered,3.0
+103,0.0,0.0,26.0,0.0,0.0,Inactive,Not recovered,0.0
+104,0.0,2.0,33.0,0.0,3.0,Inactive,Not recovered,0.0
+105,0.0,0.0,27.0,0.0,0.0,Active,Recovered,0.0
+106,,,,,,Inactive,,
+107,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+109,7.0,2.0,38.0,7.0,2.0,Inactive,Not recovered,2.0
+110,0.0,0.0,27.0,0.0,0.0,Inactive,Not recovered,2.0
+114,,,,,,Inactive,,
+115,4.0,2.0,33.0,4.0,3.0,Inactive,Not recovered,2.0
+117,6.0,2.0,36.0,6.0,3.0,Inactive,Not recovered,2.0
+119,0.0,0.0,51.0,4.0,7.0,Inactive,Not recovered,1.0
+121,2.0,0.0,36.0,2.0,0.0,Active,Recovered,1.0
+122,17.0,4.0,48.0,19.0,4.0,Inactive,Not recovered,2.0
+123,,,,,,Inactive,,
+125,0.0,0.0,24.0,0.0,0.0,Inactive,Not recovered,0.0
+126,2.0,0.0,31.0,2.0,0.0,Inactive,Not recovered,1.0
+132,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+135,9.0,2.0,30.0,9.0,2.0,Inactive,Not recovered,3.0
+136,3.0,0.0,36.0,3.0,2.0,Inactive,Not recovered,0.0
+137,,,,,,Inactive,,
+138,3.0,2.0,33.0,3.0,2.0,Inactive,Not recovered,0.0
+139,0.0,0.0,25.0,0.0,0.0,Inactive,Not recovered,0.0
+140,0.0,0.0,0.0,0.0,0.0,Inactive,Not recovered,0.0
+142,3.0,0.0,30.0,3.0,0.0,Inactive,Not recovered,2.0
+144,3.0,5.0,34.0,3.0,5.0,Active,Recovered,0.0
+145,0.0,0.0,24.0,1.0,0.0,Active,Recovered,1.0
+149,0.0,0.0,25.0,0.0,0.0,Inactive,Not recovered,0.0
+151,0.0,1.0,35.0,1.0,1.0,Active,Recovered,0.0
+152,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+155,5.0,3.0,39.0,8.0,3.0,Inactive,,
+157,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+159,0.0,0.0,31.0,0.0,3.0,Active,Recovered,0.0
+160,0.0,0.0,28.0,1.0,2.0,,,
+163,9.0,2.0,60.0,12.0,11.0,,,
+164,2.0,0.0,35.0,2.0,0.0,Inactive,Not recovered,0.0
+165,8.0,10.0,63.0,12.0,22.0,Inactive,Not recovered,3.0
+167,0.0,0.0,28.0,0.0,0.0,Active,Recovered,0.0
+171,0.0,0.0,27.0,0.0,0.0,Inactive,Not recovered,0.0
+172,2.0,0.0,26.0,4.0,0.0,Active,Recovered,0.0
+173,4.0,0.0,28.0,4.0,0.0,Inactive,Not recovered,1.0
+174,2.0,3.0,40.0,2.0,5.0,,,
+175,5.0,0.0,30.0,6.0,0.0,Active,Recovered,0.0
+176,11.0,0.0,30.0,11.0,0.0,Inactive,Not recovered,2.0
+179,9.0,3.0,48.0,10.0,3.0,Inactive,,
+180,9.0,0.0,31.0,9.0,0.0,Active,Recovered,1.0
+203,0.0,1.0,25.0,0.0,1.0,Inactive,Not recovered,0.0
+204,,,,,,Active,,
+207,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+208,3.0,0.0,26.0,5.0,0.0,Active,Recovered,0.0
+211,1.0,0.0,24.0,1.0,0.0,Inactive,Not recovered,0.0
+212,,,,,,Active,,
+213,0.0,0.0,26.0,0.0,0.0,Active,Recovered,0.0
+215,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+216,12.0,0.0,38.0,12.0,0.0,Inactive,Not recovered,2.0
+218,,,,,,Inactive,,
+219,16.0,0.0,36.0,16.0,0.0,Inactive,Not recovered,4.0
+220,15.0,4.0,49.0,16.0,4.0,Inactive,Not recovered,3.0
+221,,,,,,Active,,
+222,3.0,0.0,27.0,3.0,0.0,Inactive,Not recovered,1.0
+223,6.0,10.0,66.0,10.0,15.0,Inactive,Not recovered,4.0
+301,14.0,0.0,41.0,16.0,0.0,,,
+302,,,,,,Inactive,,
+303,5.0,0.0,27.0,6.0,0.0,Inactive,Not recovered,2.0
+304,2.0,0.0,26.0,2.0,0.0,Inactive,Not recovered,2.0
+308,0.0,1.0,40.0,0.0,8.0,,,
+309,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+310,0.0,2.0,32.0,0.0,2.0,Active,Recovered,0.0
+312,8.0,0.0,28.0,8.0,0.0,Active,Recovered,0.0
+317,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+318,10.0,3.0,48.0,10.0,6.0,Inactive,Not recovered,3.0
+319,1.0,0.0,27.0,1.0,0.0,Inactive,Not recovered,0.0
+320,0.0,9.0,45.0,0.0,12.0,Inactive,Not recovered,1.0
+321,8.0,4.0,37.0,8.0,4.0,Inactive,Not recovered,2.0
+324,0.0,0.0,25.0,0.0,0.0,Active,Recovered,0.0
+327,5.0,0.0,29.0,5.0,0.0,Inactive,Not recovered,2.0
+329,0.0,0.0,26.0,0.0,0.0,Active,Recovered,0.0
+330,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+331,4.0,0.0,37.0,6.0,0.0,Active,Recovered,0.0
+333,0.0,0.0,32.0,0.0,0.0,Active,Recovered,0.0
+336,,,,,,Active,,
+337,0.0,2.0,29.0,0.0,2.0,Active,Recovered,0.0
+338,3.0,0.0,26.0,3.0,0.0,Active,Recovered,1.0
+343,,,,,,Inactive,,
+345,0.0,0.0,28.0,0.0,0.0,Active,Recovered,0.0
+347,,,,,,Active,,
+348,16.0,2.0,51.0,19.0,2.0,Inactive,Not recovered,3.0
+349,10.0,0.0,38.0,10.0,0.0,Inactive,Not recovered,2.0
+350,0.0,0.0,24.0,0.0,0.0,Inactive,Not recovered,0.0
+351,1.0,2.0,27.0,1.0,2.0,Inactive,Not recovered,0.0
+353,3.0,0.0,30.0,4.0,0.0,Active,Recovered,0.0
+354,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+356,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+358,11.0,2.0,44.0,13.0,5.0,Inactive,Not recovered,3.0
+359,12.0,0.0,37.0,13.0,0.0,Inactive,Not recovered,2.0
+363,0.0,3.0,29.0,0.0,3.0,Active,Recovered,0.0
+364,12.0,6.0,55.0,12.0,9.0,Inactive,Not recovered,2.0
+366,14.0,0.0,42.0,14.0,0.0,Inactive,Not recovered,3.0
+367,2.0,0.0,27.0,2.0,0.0,,,
+369,7.0,0.0,26.0,7.0,0.0,Inactive,Not recovered,1.0
+370,7.0,0.0,26.0,7.0,0.0,Inactive,Not recovered,2.0
+371,13.0,0.0,33.0,15.0,0.0,Inactive,Not recovered,3.0
+372,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+373,10.0,0.0,40.0,10.0,0.0,,,
+374,2.0,4.0,32.0,2.0,4.0,Inactive,Not recovered,1.0
+376,1.0,0.0,24.0,1.0,0.0,Inactive,Not recovered,0.0
+378,5.0,1.0,28.0,5.0,1.0,Inactive,Not recovered,0.0
+379,0.0,0.0,28.0,0.0,0.0,Inactive,Not recovered,0.0
+381,0.0,0.0,24.0,0.0,0.0,Inactive,Not recovered,0.0
+382,0.0,0.0,26.0,0.0,0.0,Inactive,Not recovered,0.0
+383,0.0,0.0,24.0,0.0,0.0,Inactive,Not recovered,0.0
+385,5.0,0.0,27.0,5.0,0.0,Inactive,Not recovered,2.0
+388,13.0,1.0,39.0,17.0,2.0,Inactive,Not recovered,2.0
+390,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+391,0.0,0.0,25.0,0.0,0.0,Inactive,Not recovered,0.0
+393,3.0,3.0,34.0,3.0,3.0,Inactive,Not recovered,1.0
+394,17.0,5.0,44.0,17.0,5.0,Inactive,Not recovered,4.0
+397,,,,,,Inactive,,
+399,0.0,0.0,27.0,0.0,0.0,Active,Recovered,0.0
+400,4.0,0.0,24.0,5.0,0.0,Inactive,Not recovered,2.0
+402,1.0,0.0,24.0,1.0,0.0,Active,Recovered,1.0
+403,0.0,0.0,24.0,0.0,0.0,Inactive,Not recovered,0.0
+404,2.0,4.0,35.0,2.0,4.0,Inactive,Not recovered,1.0
+405,3.0,3.0,34.0,4.0,3.0,Inactive,Not recovered,2.0
+406,3.0,0.0,32.0,3.0,0.0,Inactive,Not recovered,0.0
+408,4.0,6.0,56.0,4.0,6.0,,,
+410,,,,,,Active,,
+411,6.0,0.0,29.0,6.0,0.0,Inactive,Not recovered,1.0
+412,5.0,0.0,28.0,5.0,0.0,Inactive,Not recovered,2.0
+413,,,,,,Inactive,,
+414,5.0,0.0,26.0,5.0,0.0,Inactive,Not recovered,2.0
+418,7.0,2.0,33.0,7.0,2.0,Inactive,Not recovered,1.0
+419,8.0,0.0,30.0,8.0,0.0,Inactive,Not recovered,2.0
+421,3.0,0.0,26.0,3.0,0.0,Active,Recovered,0.0
+422,20.0,7.0,73.0,25.0,11.0,,,
+424,0.0,0.0,24.0,0.0,0.0,Inactive,Not recovered,0.0
+425,11.0,0.0,28.0,11.0,0.0,Inactive,Not recovered,3.0
+426,0.0,0.0,24.0,0.0,0.0,Active,Recovered,0.0
+427,6.0,0.0,39.0,8.0,0.0,,,
+428,8.0,0.0,30.0,8.0,0.0,Inactive,Not recovered,2.0

@@ -1,0 +1,6 @@
+Measurement,N,Mean_Baseline,Mean_10y,Mean_Difference,p_value
+BPRS Total,111,61.64,32.71,-28.93,0.0
+SAPS Total,111,13.35,1.88,-11.47,0.0
+SANS Total,111,8.08,5.68,-2.41,0.0006
+BPRS_Positive,111,7.57,1.23,-6.34,0.0
+BPRS_Negative,111,6.31,5.19,-1.12,0.0728

@@ -1,0 +1,22 @@
+Variable,Type,Recovered_N,Recovered_Mean,Recovered_SD,NotRecovered_N,NotRecovered_Mean,NotRecovered_SD,p_value,Details (Count/%)
+baseline_age,Numerical,58,28.79,7.3,111,29.81,9.38,0.4728,
+BPRS_Total,Numerical,58,60.67,13.29,111,61.64,13.23,0.6529,
+BPRS_Positive_Onset,Numerical,58,7.12,2.32,111,7.57,2.38,0.2445,
+BPRS_Negative_Onset,Numerical,58,5.6,5.42,111,6.31,6.0,0.4563,
+BPRS_Disorganized_Onset,Numerical,58,5.33,3.39,111,5.78,3.59,0.4254,
+DUI_months,Numerical,58,23.31,32.25,106,25.95,31.72,0.6135,
+DUP_months,Numerical,58,13.3,28.27,110,11.64,23.5,0.6853,
+DAP_months,Numerical,57,17.08,28.87,110,17.75,24.79,0.8754,
+DAT_months,Numerical,57,3.87,4.15,111,6.08,7.19,0.0343,
+SANS_Total,Numerical,58,7.64,6.21,111,8.08,6.56,0.6717,
+SAPS_Total,Numerical,58,12.45,4.27,111,13.35,4.5,0.2095,
+gender,Categorical,58,,,111,,,0.5738,"Female: [Rec: 29 (37.2%), Not: 49] | Male: [Rec: 29 (31.9%), Not: 62] | "
+cannabis_use,Categorical,58,,,111,,,0.1346,"No: [Rec: 42 (38.9%), Not: 66] | Yes: [Rec: 16 (26.2%), Not: 45] | "
+lives_with_parents,Categorical,58,,,111,,,0.68,"No: [Rec: 25 (32.1%), Not: 53] | Yes: [Rec: 33 (36.3%), Not: 58] | "
+family_hx_psychosis,Categorical,58,,,111,,,1.0,"No: [Rec: 44 (34.1%), Not: 85] | Yes: [Rec: 14 (35.0%), Not: 26] | "
+hospital_admission,Categorical,58,,,111,,,0.0166,"Admitted: [Rec: 28 (26.9%), Not: 76] | Avoided: [Rec: 30 (46.2%), Not: 35] | "
+education,Categorical,58,,,111,,,0.0542,"High School: [Rec: 39 (41.1%), Not: 56] | Primary School: [Rec: 19 (25.7%), Not: 55] | "
+socioeconomic_status,Categorical,58,,,111,,,0.1285,"Low: [Rec: 24 (27.3%), Not: 64] | Medium/Higher: [Rec: 33 (41.8%), Not: 46] | Unknown: [Rec: 1 (50.0%), Not: 1] | "
+employment,Categorical,58,,,111,,,0.0692,"Active (Work/Study): [Rec: 40 (40.4%), Not: 59] | Inactive/Other: [Rec: 18 (25.7%), Not: 52] | "
+marital_status,Categorical,58,,,111,,,1.0,"Married: [Rec: 15 (34.9%), Not: 28] | Single: [Rec: 43 (34.1%), Not: 83] | "
+diagnosis,Categorical,58,,,111,,,0.0285,"Brief reactive psychosis: [Rec: 6 (60.0%), Not: 4] | Non-organic psychosis: [Rec: 1 (9.1%), Not: 10] | Schizoaffective: [Rec: 1 (33.3%), Not: 2] | Schizophrenia: [Rec: 31 (29.2%), Not: 75] | Schizophreniform: [Rec: 19 (48.7%), Not: 20] | "

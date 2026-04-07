@@ -1,0 +1,2 @@
+Algorithm,CV ROC-AUC,Test ROC-AUC,Optimal Threshold,Optimized Test F1
+Random Forest (Class-Balanced & Constrained),0.565 ± 0.101,0.583,0.388,0.556

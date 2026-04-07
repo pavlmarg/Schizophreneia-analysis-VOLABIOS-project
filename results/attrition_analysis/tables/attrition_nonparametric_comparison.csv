@@ -1,0 +1,22 @@
+Variable,Type,Test,Returned_Mean,Not_Returned_Mean,Returned_Median,Not_Returned_Median,Returned_Counts_Pct,Not_Returned_Counts_Pct,p_value
+employment,Categorical,Chi-Square,N/A,N/A,N/A,N/A,Active (Work/Study): 99 (66.4%) | Inactive/Other: 70 (44.3%),Active (Work/Study): 50 (33.6%) | Inactive/Other: 88 (55.7%),0.0002
+cannabis_use,Categorical,Chi-Square,N/A,N/A,N/A,N/A,No: 108 (63.2%) | Yes: 61 (44.9%),No: 63 (36.8%) | Yes: 75 (55.1%),0.002
+education,Categorical,Chi-Square,N/A,N/A,N/A,N/A,High School: 95 (61.3%) | Primary School: 74 (48.7%),High School: 60 (38.7%) | Primary School: 78 (51.3%),0.0353
+SANS_Total,Numerical,Mann-Whitney U,7.93,6.65,6.0,5.0,N/A,N/A,0.0724
+gender,Categorical,Chi-Square,N/A,N/A,N/A,N/A,Female: 78 (60.9%) | Male: 91 (50.8%),Female: 50 (39.1%) | Male: 88 (49.2%),0.1015
+BPRS_Negative_Onset,Numerical,Mann-Whitney U,6.07,5.25,5.0,3.0,N/A,N/A,0.1653
+BPRS_Disorganized_Onset,Numerical,Mann-Whitney U,5.63,5.96,5.0,5.0,N/A,N/A,0.1783
+SAPS_Total,Numerical,Mann-Whitney U,13.04,13.49,12.0,13.0,N/A,N/A,0.1898
+marital_status,Categorical,Chi-Square,N/A,N/A,N/A,N/A,Married: 43 (61.4%) | Single: 126 (53.2%),Married: 27 (38.6%) | Single: 111 (46.8%),0.2781
+baseline_age,Numerical,Mann-Whitney U,29.46,28.85,28.0,27.0,N/A,N/A,0.3001
+socioeconomic_status,Categorical,Chi-Square,N/A,N/A,N/A,N/A,Low: 88 (51.5%) | Medium/Higher: 79 (59.8%) | Unknown: 2 (50.0%),Low: 83 (48.5%) | Medium/Higher: 53 (40.2%) | Unknown: 2 (50.0%),0.3397
+BPRS_Total,Numerical,Mann-Whitney U,61.31,62.12,60.0,61.0,N/A,N/A,0.3552
+DAP_months,Numerical,Mann-Whitney U,17.52,20.84,10.23,8.9,N/A,N/A,0.3674
+DAT_months,Numerical,Mann-Whitney U,5.33,4.82,3.07,2.66,N/A,N/A,0.4171
+hospital_admission,Categorical,Chi-Square,N/A,N/A,N/A,N/A,Admitted: 104 (53.3%) | Avoided: 65 (58.0%),Admitted: 91 (46.7%) | Avoided: 47 (42.0%),0.4977
+BPRS_Positive_Onset,Numerical,Mann-Whitney U,7.41,7.53,7.0,7.5,N/A,N/A,0.5334
+diagnosis,Categorical,Chi-Square,N/A,N/A,N/A,N/A,Brief reactive psychosis: 10 (43.5%) | Non-organic psychosis: 11 (45.8%) | Schizoaffective: 3 (60.0%) | Schizophrenia: 106 (57.6%) | Schizophreniform: 39 (54.9%),Brief reactive psychosis: 13 (56.5%) | Non-organic psychosis: 13 (54.2%) | Schizoaffective: 2 (40.0%) | Schizophrenia: 78 (42.4%) | Schizophreniform: 32 (45.1%),0.6259
+lives_with_parents,Categorical,Chi-Square,N/A,N/A,N/A,N/A,No: 78 (56.5%) | Yes: 91 (53.8%),No: 60 (43.5%) | Yes: 78 (46.2%),0.7237
+family_hx_psychosis,Categorical,Chi-Square,N/A,N/A,N/A,N/A,No: 129 (54.7%) | Yes: 40 (56.3%),No: 107 (45.3%) | Yes: 31 (43.7%),0.91
+DUP_months,Numerical,Mann-Whitney U,12.21,15.96,4.0,3.75,N/A,N/A,0.9222
+DUI_months,Numerical,Mann-Whitney U,25.01,31.68,14.0,12.0,N/A,N/A,0.9744

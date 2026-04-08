@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-import warnings
 import lightgbm as lgb
 
 from sklearn.model_selection import StratifiedKFold, cross_validate, train_test_split, GridSearchCV
@@ -19,9 +18,7 @@ from sklearn.metrics import (
     precision_recall_curve
 )
 
-warnings.filterwarnings('ignore')
 
-# Create outputs directory
 os.makedirs('outputs', exist_ok=True)
 
 # Load Data
@@ -50,14 +47,6 @@ CATEGORICAL_FEATURES = [
     'hospital_admission', 'education', 'socioeconomic_status', 'employment',
     'marital_status', 'diagnosis'
 ]
-
-# Denote features with known survivorship bias
-# LightGBM does not accept '*' or spaces in feature names, using '_bias' instead
-attrition_biased = ['cannabis_use', 'education', 'employment']
-for col in attrition_biased:
-    if col in df.columns:
-        df.rename(columns={col: col + '_bias'}, inplace=True)
-        CATEGORICAL_FEATURES[CATEGORICAL_FEATURES.index(col)] = col + '_bias'
 
 # Impute Missing Values
 for col in CONTINUOUS_FEATURES:
@@ -90,10 +79,8 @@ pipeline = Pipeline([
 # Cross-Validation setup
 cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=10)
 
-# =====================================================================
-# AUTOMATED HYPERPARAMETER TUNING (GRID SEARCH)
-# =====================================================================
-# The menu of variables to test
+
+# AUTOMATED HYPERPARAMETER TUNING
 param_grid = {
     'clf__n_estimators': [100, 200, 300],
     'clf__learning_rate': [0.01, 0.05, 0.1],
@@ -102,7 +89,6 @@ param_grid = {
     'clf__min_child_samples': [3, 5]
 }
 
-print("Starting Grid Search to find optimal variables. This may take a minute...")
 
 grid_search = GridSearchCV(
     pipeline, 
@@ -119,14 +105,11 @@ grid_search.fit(X_train, y_train)
 # Extract the winning model
 best_pipeline = grid_search.best_estimator_
 
-print("\n🏆 Best Variables Found by Grid Search:")
+print("\nBest Variables Found by Grid Search:")
 for param_name, param_value in grid_search.best_params_.items():
     print(f" - {param_name.replace('clf__', '')}: {param_value}")
 
-# =====================================================================
-# PREDICT & FIND OPTIMAL THRESHOLD WITH THE BEST MODEL
-# =====================================================================
-# Generate probabilities using the newly optimized pipeline
+# PREDICT & FIND OPTIMAL THRESHOLD 
 y_prob = best_pipeline.predict_proba(X_test)[:, 1]
 
 default_auc = roc_auc_score(y_test, y_prob)
@@ -134,33 +117,30 @@ print(f"\nTest ROC-AUC Score: {default_auc:.3f}")
 
 # Threshold Optimization
 precisions, recalls, pr_thresholds = precision_recall_curve(y_test, y_prob)
-f1_scores = np.divide(2 * (precisions * recalls), (precisions + recalls), 
-                      out=np.zeros_like(precisions), where=(precisions + recalls) != 0)
+f1_scores = np.divide(2 * (precisions * recalls), (precisions + recalls), out=np.zeros_like(precisions), where=(precisions + recalls) != 0)
 
 optimal_idx = np.argmax(f1_scores)
 optimal_threshold = pr_thresholds[optimal_idx]
 
 print(f"Optimal Cutoff found at: {optimal_threshold:.3f}")
-print(f"\n--- Final Classification Report (Using Optimal Cutoff {optimal_threshold:.3f}) ---")
+print(f"\n--- Final Classification Report {optimal_threshold:.3f}) ---")
 
 # Apply optimal threshold
 y_pred_optimal = (y_prob >= optimal_threshold).astype(int)
 print(classification_report(y_test, y_pred_optimal, target_names=['Not Recovered', 'Recovered']))
 
-# =====================================================================
-# VISUALIZATIONS
-# =====================================================================
-fig, axes = plt.subplots(1, 3, figsize=(18, 5))
-fig.suptitle('VOLABIOS: Grid-Searched LightGBM Recovery Model\n(_bias denotes variable with known attrition bias)',
-             fontsize=14, fontweight='bold')
 
-# A. Confusion Matrix
+# VISUALIZATIONS
+fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+fig.suptitle('VOLABIOS: Grid-Searched LightGBM Recovery Model\n(_bias denotes variable with known attrition bias)',fontsize=14, fontweight='bold')
+
+#  Confusion Matrix
 cm = confusion_matrix(y_test, y_pred_optimal)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Not Recovered', 'Recovered'])
 disp.plot(ax=axes[0], colorbar=False, cmap='Greens')
 axes[0].set_title(f'Confusion Matrix\n(Optimal Threshold: {optimal_threshold:.2f})')
 
-# B. ROC Curve
+# ROC Curve
 fpr, tpr, _ = roc_curve(y_test, y_prob)
 axes[1].plot(fpr, tpr, color='forestgreen', lw=2, label=f'AUC = {default_auc:.3f}')
 axes[1].plot([0, 1], [0, 1], 'k--', lw=1, label='Random guessing')
@@ -169,7 +149,7 @@ axes[1].set_ylabel('True Positive Rate')
 axes[1].set_title('ROC Curve')
 axes[1].legend()
 
-# C. Feature Importance
+# Feature Importance
 importances = best_pipeline.named_steps['clf'].booster_.feature_importance(importance_type='gain')
 importance_df = pd.DataFrame({'feature': X.columns, 'importance': importances})
 importance_df = importance_df[importance_df['importance'] > 0].sort_values('importance', ascending=False).head(15)
@@ -183,9 +163,7 @@ plt.tight_layout()
 plt.savefig('outputs/master_lightgbm_gridsearch.png', dpi=150, bbox_inches='tight')
 print("\nVisualizations saved to 'outputs/master_lightgbm_gridsearch.png'.")
 
-# =====================================================================
 # SUMMARY & CSV EXPORT
-# =====================================================================
 print("\n SUMMARY FOR PAPER WRITING")
 
 summary = {

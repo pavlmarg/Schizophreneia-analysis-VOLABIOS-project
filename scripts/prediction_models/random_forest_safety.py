@@ -3,25 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-import warnings
 
 from sklearn.model_selection import StratifiedKFold, cross_validate, train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import (
-    classification_report,
-    roc_auc_score,
-    roc_curve,
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    f1_score
-)
-
-warnings.filterwarnings('ignore')
-
-# Create outputs directory
-os.makedirs('outputs', exist_ok=True)
+from sklearn.metrics import (classification_report, roc_auc_score, roc_curve, confusion_matrix, ConfusionMatrixDisplay, f1_score)
 
 # Load Data
 baseline = pd.read_csv('data_files/data_processed/csv_files/master_baseline_comprehensive.csv')
@@ -50,13 +37,6 @@ CATEGORICAL_FEATURES = [
     'marital_status', 'diagnosis'
 ]
 
-# Denote features with known survivorship bias
-attrition_biased = ['cannabis_use', 'education', 'employment']
-for col in attrition_biased:
-    if col in df.columns:
-        df.rename(columns={col: col + '*'}, inplace=True)
-        CATEGORICAL_FEATURES[CATEGORICAL_FEATURES.index(col)] = col + '*'
-
 # Impute Missing Values (Median for numbers, Mode for categories)
 for col in CONTINUOUS_FEATURES:
     if df[col].isnull().any():
@@ -74,7 +54,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, stratify=y, random_state=42
 )
 
-# Pipeline: Standardize -> Random Forest (Constrained)
+# Pipeline: Standardize -> Random Forest 
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
     ('clf', RandomForestClassifier(
@@ -100,19 +80,15 @@ y_prob = pipeline.predict_proba(X_test)[:, 1]
 default_auc = roc_auc_score(y_test, y_prob)
 print(f"Test ROC-AUC Score: {default_auc:.3f}")
 
-# =====================================================================
+
 # MODIFICATION: CLINICAL SAFETY THRESHOLD
-# =====================================================================
 fpr, tpr, roc_thresholds = roc_curve(y_test, y_prob)
 
-# Specificity is the detection rate for the "Not Recovered" class 
-specificity = 1 - fpr
-
-# Catch at least 85% of "Not Recovered" patients
+# Catch at least 80% of "Not Recovered" patients
 target_safety_rate = 0.8
 
 # Find all thresholds that meet this safety requirement
-valid_indices = np.where(specificity >= target_safety_rate)[0]
+valid_indices = np.where(1 - fpr >= target_safety_rate)[0]
 
 # Pick the threshold that meets the safety requirement but still maximizes recovery detection
 best_idx = valid_indices[-1]
@@ -128,8 +104,7 @@ print(classification_report(y_test, y_pred_safe, target_names=['Not Recovered', 
 
 
 fig, axes = plt.subplots(1, 3, figsize=(18, 5))
-fig.suptitle('VOLABIOS: Clinical Safety Random Forest Model\n(* Denotes variable with known attrition bias)',
-             fontsize=14, fontweight='bold')
+fig.suptitle('VOLABIOS: Clinical Safety Random Forest Model\n',fontsize=14, fontweight='bold')
 
 
 cm = confusion_matrix(y_test, y_pred_safe)
@@ -172,5 +147,4 @@ for k, v in summary.items():
     
 summary_df = pd.DataFrame([summary])
 
-# Save to the outputs folder
 summary_df.to_csv('outputs/summary_clinical_model.csv', index=False)

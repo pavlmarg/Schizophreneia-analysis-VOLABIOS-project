@@ -1,25 +1,13 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 import os
-import warnings
 
 from sklearn.model_selection import StratifiedKFold, cross_validate, train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import (
-    classification_report,
-    roc_auc_score,
-    roc_curve,
-    confusion_matrix,
-    ConfusionMatrixDisplay,
-    f1_score,
-    precision_recall_curve
-)
-
-warnings.filterwarnings('ignore')
+from sklearn.metrics import ( classification_report, roc_auc_score, roc_curve, confusion_matrix, ConfusionMatrixDisplay, f1_score, precision_recall_curve)
 
 # Create outputs directory
 os.makedirs('outputs', exist_ok=True)
@@ -52,12 +40,6 @@ CATEGORICAL_FEATURES = [
     'marital_status', 'diagnosis'
 ]
 
-# Denote features with known survivorship bias
-attrition_biased = ['cannabis_use', 'education', 'employment']
-for col in attrition_biased:
-    if col in df.columns:
-        df.rename(columns={col: col + '*'}, inplace=True)
-        CATEGORICAL_FEATURES[CATEGORICAL_FEATURES.index(col)] = col + '*'
 
 # Impute Missing Values (Median for numbers, Mode for categories)
 for col in CONTINUOUS_FEATURES:
@@ -71,12 +53,12 @@ for col in CATEGORICAL_FEATURES:
 X = pd.get_dummies(df[CONTINUOUS_FEATURES + CATEGORICAL_FEATURES], columns=CATEGORICAL_FEATURES, drop_first=True)
 y = df['target']
 
-# Train/Test Split (80/20 Stratified)
+# Train/Test Split 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, stratify=y, random_state=42
 )
 
-# Pipeline: Standardize -> Random Forest (Constrained)
+# Pipeline: Standardize -> Random Forest
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
     ('clf', RandomForestClassifier(
@@ -107,22 +89,20 @@ print(f"Test ROC-AUC Score: {default_auc:.3f}")
 
 # Find the threshold that maximizes the F1 Score
 precisions, recalls, pr_thresholds = precision_recall_curve(y_test, y_prob)
-f1_scores = np.divide(2 * (precisions * recalls), (precisions + recalls), 
-                      out=np.zeros_like(precisions), where=(precisions + recalls) != 0)
+f1_scores = np.divide(2 * (precisions * recalls), (precisions + recalls), out=np.zeros_like(precisions), where=(precisions + recalls) != 0)
 
 optimal_idx = np.argmax(f1_scores)
 optimal_threshold = pr_thresholds[optimal_idx]
 
 print(f"Optimal Cutoff found at: {optimal_threshold:.3f}")
-print(f"\n--- Final Classification Report (Using Optimal Cutoff {optimal_threshold:.3f}) ---")
+print(f"\n Final Classification Report{optimal_threshold:.3f})")
 
 # Apply optimal threshold
 y_pred_optimal = (y_prob >= optimal_threshold).astype(int)
 print(classification_report(y_test, y_pred_optimal, target_names=['Not Recovered', 'Recovered']))
 
 fig, axes = plt.subplots(1, 3, figsize=(18, 5))
-fig.suptitle('VOLABIOS: Final Random Forest Recovery Prediction Model\n(* Denotes variable with known attrition bias)',
-             fontsize=14, fontweight='bold')
+fig.suptitle('VOLABIOS: Final Random Forest Recovery Prediction Model\n(* Denotes variable with known attrition bias)',fontsize=14, fontweight='bold')
 
 
 cm = confusion_matrix(y_test, y_pred_optimal)
@@ -150,7 +130,6 @@ axes[2].invert_yaxis()
 
 plt.tight_layout()
 plt.savefig('outputs/master_random_forest_results.png', dpi=150, bbox_inches='tight')
-print("Visualizations saved to 'outputs/master_random_forest_results.png'.")
 
 print("\n SUMMARY ")
 
@@ -166,5 +145,4 @@ for k, v in summary.items():
     
 summary_df = pd.DataFrame([summary])
 
-# Save to the outputs folder
 summary_df.to_csv('outputs/summary_optimized_model.csv', index=False)

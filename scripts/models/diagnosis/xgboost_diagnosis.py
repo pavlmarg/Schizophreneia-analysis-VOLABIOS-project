@@ -45,29 +45,17 @@ print(f"Dataset ready. Predicting across {len(df)} total patients.")
 class_counts = df['target'].value_counts()
 print(class_counts.rename({1: 'Schizophrenia', 0: 'Other'}))
 
-# =====================================================================
-# THE FIX: DYNAMIC SCALE_POS_WEIGHT FOR XGBOOST
-# =====================================================================
-# scale_pos_weight = count(negative class) / count(positive class)
-# This forces XGBoost to pay equal attention to the smaller 'Other' group
+
+# DYNAMIC SCALE_POS_WEIGHT FOR XGBOOST
 weight_ratio = class_counts[0] / class_counts[1]
-print(f"\nCalculated scale_pos_weight for XGBoost: {weight_ratio:.3f}")
+
 
 # =====================================================================
 # FEATURE SELECTION
 # =====================================================================
-CONTINUOUS_FEATURES = [
-    'BPRS_Total', 'BPRS_Positive_Onset', 'BPRS_Disorganized_Onset', 'DAP_months', 'DUI_months', 'DUP_months', 'BPRS_Negative_Onset'
-]
+CONTINUOUS_FEATURES = [ 'DAP_months', 'BPRS_Negative_Onset']
 
-CATEGORICAL_FEATURES = [ 'gender', 'cannabis_use', 'family_hx_psychosis', 'marital_status' ]
-
-attrition_biased = ['cannabis_use', 'education', 'employment']
-for col in attrition_biased:
-    if col in df.columns:
-        df.rename(columns={col: col + '_bias'}, inplace=True)
-        if col in CATEGORICAL_FEATURES:
-            CATEGORICAL_FEATURES[CATEGORICAL_FEATURES.index(col)] = col + '_bias'
+CATEGORICAL_FEATURES = [ 'marital_status' ]
 
 # Impute Missing Values
 for col in CONTINUOUS_FEATURES:
@@ -100,12 +88,12 @@ pipeline = Pipeline([
     ))
 ])
 
-cv = StratifiedKFold(n_splits=7, shuffle=True, random_state=10)
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=10)
 
 param_grid = {
-    'clf__n_estimators': [300, 400, 500],
-    'clf__learning_rate': [0.01, 0.05, 0.1],
-    'clf__max_depth': [3, 4]
+    'clf__n_estimators': [150],
+    'clf__learning_rate': [0.01],
+    'clf__max_depth': [2]
 }
 
 print("\nRunning Grid Search for XGBoost...")
@@ -171,10 +159,10 @@ axes[1].legend()
 # C. Feature Importance (XGBoost syntax)
 importances = best_pipeline.named_steps['clf'].feature_importances_
 importance_df = pd.DataFrame({'feature': X.columns, 'importance': importances})
-importance_df = importance_df[importance_df['importance'] > 0].sort_values('importance', ascending=False).head(10)
+importance_df = importance_df[importance_df['importance'] > 0].sort_values('importance', ascending=False).head(5)
 
 axes[2].barh(importance_df['feature'], importance_df['importance'], color='firebrick')
-axes[2].set_title('Top 10 Drivers of Diagnosis\n(Feature Importance)')
+axes[2].set_title('Top Drivers of Diagnosis')
 axes[2].set_xlabel('Importance Score')
 axes[2].invert_yaxis()
 

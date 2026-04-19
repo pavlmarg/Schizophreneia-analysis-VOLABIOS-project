@@ -8,7 +8,7 @@ from sklearn.model_selection import StratifiedKFold, cross_validate, train_test_
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import (classification_report, roc_auc_score, roc_curve, confusion_matrix, ConfusionMatrixDisplay, f1_score)
+from sklearn.metrics import (classification_report,roc_auc_score, roc_curve, confusion_matrix, ConfusionMatrixDisplay, f1_score)
 
 # Load Data
 baseline = pd.read_csv('data_files/data_processed/csv_files/master_baseline_comprehensive.csv')
@@ -139,8 +139,7 @@ summary = {
     'CV ROC-AUC': f"{cv_results['test_roc_auc'].mean():.3f} ± {cv_results['test_roc_auc'].std():.3f}",
     'Test ROC-AUC': f"{default_auc:.3f}",
     'Clinical Threshold': f"{clinical_threshold:.3f}",
-    'Not Recovered Detection Rate': f"{specificity[best_idx]:.1%}",
-    'Optimized Test F1': f"{f1_score(y_test, y_pred_safe):.3f}" # <--- Added the F1 score here
+    'Optimized Test F1': f"{f1_score(y_test, y_pred_safe):.3f}" 
 }
 for k, v in summary.items():
     print(f"{k:<30}: {v}")

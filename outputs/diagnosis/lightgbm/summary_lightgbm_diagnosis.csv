@@ -1,0 +1,2 @@
+Algorithm,Best Parameters,Threshold Used,Test ROC-AUC,Test F1 (Macro Avg)
+LightGBM (Schizophrenia vs. Other),"{'learning_rate': 0.005, 'max_depth': 3, 'n_estimators': 500, 'num_leaves': 7}",0.232,0.762,0.718

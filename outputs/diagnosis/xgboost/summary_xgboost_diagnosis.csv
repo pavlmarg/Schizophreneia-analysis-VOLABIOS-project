@@ -1,0 +1,2 @@
+Algorithm,Best Parameters,Test ROC-AUC,Test F1 (Macro Avg)
+XGBoost (Schizophrenia vs. Other),"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}",0.765,0.725

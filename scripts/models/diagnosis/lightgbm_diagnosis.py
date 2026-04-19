@@ -50,25 +50,9 @@ print(df['target'].value_counts().rename({1: 'Schizophrenia', 0: 'Other'}))
 # =====================================================================
 # FEATURE SELECTION (STRICTLY REMOVING 'DIAGNOSIS')
 # =====================================================================
-CONTINUOUS_FEATURES = [
-    'baseline_age', 'BPRS_Total', 'BPRS_Positive_Onset',
-    'BPRS_Disorganized_Onset', 'DAP_months', 'DAT_months',
-    'DUI_months', 'DUP_months', 'SANS_Total', 'SAPS_Total'
-]
+CONTINUOUS_FEATURES = ['DAP_months', 'DUP_months', 'SANS_Total' ]
 
-CATEGORICAL_FEATURES = [
-    'gender', 'cannabis_use', 'lives_with_parents', 'family_hx_psychosis',
-    'hospital_admission', 'education', 'socioeconomic_status', 'employment',
-    'marital_status' 
-]
-
-# Rename biased columns for LightGBM compatibility
-attrition_biased = ['cannabis_use', 'education', 'employment']
-for col in attrition_biased:
-    if col in df.columns:
-        df.rename(columns={col: col + '_bias'}, inplace=True)
-        if col in CATEGORICAL_FEATURES:
-            CATEGORICAL_FEATURES[CATEGORICAL_FEATURES.index(col)] = col + '_bias'
+CATEGORICAL_FEATURES = [ ]
 
 # Impute Missing Values (Median for numbers, Mode for categories)
 for col in CONTINUOUS_FEATURES:
@@ -99,10 +83,9 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=10)
 
 # Conservative grid search to prevent overfitting
 param_grid = {
-    'clf__n_estimators': [400, 500, 600],
-    'clf__learning_rate': [0.01, 0.005],
-    'clf__max_depth': [3, 4],
-    'clf__num_leaves': [7, 15]
+    'clf__n_estimators': [150],
+    'clf__learning_rate': [0.02],
+    'clf__max_depth': [3]
 }
 
 print("\nRunning Grid Search for Diagnostic Predictor...")
@@ -174,7 +157,7 @@ importance_df = pd.DataFrame({'feature': X.columns, 'importance': importances})
 importance_df = importance_df[importance_df['importance'] > 0].sort_values('importance', ascending=False).head(7)
 
 axes[2].barh(importance_df['feature'], importance_df['importance'], color='darkorange')
-axes[2].set_title('Top 7 Drivers of Diagnosis\n')
+axes[2].set_title('Top Drivers of Diagnosis')
 axes[2].set_xlabel('Total Gain')
 axes[2].invert_yaxis()
 
@@ -192,7 +175,6 @@ print("="*50)
 summary = {
     'Algorithm': 'LightGBM (Schizophrenia vs. Other)',
     'Best Parameters': str({k.replace('clf__', ''): v for k, v in grid_search.best_params_.items()}),
-    'Threshold Used': f"{optimal_threshold:.3f}", 
     'Test ROC-AUC': f"{auc_score:.3f}",
     'Test F1 (Macro Avg)': f"{f1_score(y_test, y_pred_optimal, average='macro'):.3f}" 
 }

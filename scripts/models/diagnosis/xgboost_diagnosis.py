@@ -2,27 +2,11 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
-import warnings
 import xgboost as xgb
-
 from sklearn.model_selection import StratifiedKFold, train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import (
-    classification_report, 
-    roc_auc_score, 
-    roc_curve, 
-    confusion_matrix, 
-    ConfusionMatrixDisplay,
-    precision_recall_curve,
-    f1_score
-)
-
-warnings.filterwarnings('ignore')
-
-# Create outputs directory
-os.makedirs('outputs', exist_ok=True)
+from sklearn.metrics import (classification_report, roc_auc_score, roc_curve, confusion_matrix, ConfusionMatrixDisplay,f1_score)
 
 # 1. Load Data
 df = pd.read_csv('data_files/data_processed/csv_files/master_baseline_comprehensive.csv')
@@ -41,14 +25,10 @@ def group_diagnosis(diag):
 df['target'] = df['diagnosis'].apply(group_diagnosis)
 df = df.dropna(subset=['target'])
 
-print(f"Dataset ready. Predicting across {len(df)} total patients.")
 class_counts = df['target'].value_counts()
-print(class_counts.rename({1: 'Schizophrenia', 0: 'Other'}))
-
 
 # DYNAMIC SCALE_POS_WEIGHT FOR XGBOOST
 weight_ratio = class_counts[0] / class_counts[1]
-
 
 # =====================================================================
 # FEATURE SELECTION
@@ -77,7 +57,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 # =====================================================================
 # MODELING: XGBOOST WITH GRID SEARCH
 # =====================================================================
-# Base Pipeline using XGBoost
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
     ('clf', xgb.XGBClassifier(
@@ -96,7 +75,6 @@ param_grid = {
     'clf__max_depth': [2]
 }
 
-print("\nRunning Grid Search for XGBoost...")
 grid_search = GridSearchCV(
     pipeline, 
     param_grid, 
@@ -144,7 +122,7 @@ fig.suptitle('VOLABIOS: F1-Optimized XGBoost Diagnostic Model', fontsize=14, fon
 # A. Confusion Matrix
 cm = confusion_matrix(y_test, y_pred_optimal)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Other', 'Schizophrenia'])
-disp.plot(ax=axes[0], colorbar=False, cmap='Reds') # Changed to Reds to differentiate from LightGBM
+disp.plot(ax=axes[0], colorbar=False, cmap='Reds')
 axes[0].set_title(f'Confusion Matrix\n(Optimal Threshold: {optimal_threshold:.2f})')
 
 # B. ROC Curve
@@ -168,7 +146,6 @@ axes[2].invert_yaxis()
 
 plt.tight_layout()
 plt.savefig('outputs/master_diagnosis_xgboost.png', dpi=150, bbox_inches='tight')
-print("\nVisualizations saved to 'outputs/master_diagnosis_xgboost.png'.")
 
 # =====================================================================
 # SUMMARY & CSV EXPORT
@@ -185,7 +162,6 @@ summary = {
     'Test F1 (Macro Avg)': f"{f1_score(y_test, y_pred_optimal, average='macro'):.3f}" 
 }
 
-# Print it nicely to the console
 for key, value in summary.items():
     print(f"{key:<20}: {value}")
 
@@ -193,5 +169,3 @@ for key, value in summary.items():
 summary_df_xgb = pd.DataFrame([summary])
 csv_path_xgb = 'outputs/summary_xgboost_diagnosis.csv'
 summary_df_xgb.to_csv(csv_path_xgb, index=False)
-
-print(f"\n[Success] Final summary saved to: {csv_path_xgb}")

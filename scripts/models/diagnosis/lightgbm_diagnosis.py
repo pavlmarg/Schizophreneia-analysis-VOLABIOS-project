@@ -2,29 +2,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
-import warnings
 import lightgbm as lgb
-
 from sklearn.model_selection import StratifiedKFold, train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import (
-    classification_report, 
-    roc_auc_score, 
-    roc_curve, 
-    confusion_matrix, 
-    ConfusionMatrixDisplay,
-    precision_recall_curve,
-    f1_score
-)
+from sklearn.metrics import (classification_report, roc_auc_score, roc_curve, confusion_matrix, ConfusionMatrixDisplay,f1_score)
 
-warnings.filterwarnings('ignore')
-
-# Create outputs directory
-os.makedirs('outputs', exist_ok=True)
-
-# 1. Load Data (Using ONLY the baseline data for diagnosis prediction)
+# Load Data
 df = pd.read_csv('data_files/data_processed/csv_files/master_baseline_comprehensive.csv')
 
 # =====================================================================
@@ -33,7 +17,6 @@ df = pd.read_csv('data_files/data_processed/csv_files/master_baseline_comprehens
 def group_diagnosis(diag):
     if pd.isna(diag):
         return np.nan
-    # IMPORTANT: Ensure 'Schizophrenia' matches the exact capitalization in your CSV
     elif 'Schizophrenia' in str(diag): 
         return 1
     else:
@@ -41,15 +24,11 @@ def group_diagnosis(diag):
 
 df['target'] = df['diagnosis'].apply(group_diagnosis)
 
-# Drop any rows where diagnosis was completely missing
 df = df.dropna(subset=['target'])
 
-print(f"Dataset ready. Predicting across {len(df)} total patients.")
-print(df['target'].value_counts().rename({1: 'Schizophrenia', 0: 'Other'}))
-
-# =====================================================================
-# FEATURE SELECTION (STRICTLY REMOVING 'DIAGNOSIS')
-# =====================================================================
+# =====================================
+# FEATURE SELECTION 
+# =====================================
 CONTINUOUS_FEATURES = ['DAP_months', 'DUP_months', 'SANS_Total' ]
 
 CATEGORICAL_FEATURES = [ ]
@@ -179,7 +158,6 @@ summary = {
     'Test F1 (Macro Avg)': f"{f1_score(y_test, y_pred_optimal, average='macro'):.3f}" 
 }
 
-# Print it nicely to the console
 for key, value in summary.items():
     print(f"{key:<20}: {value}")
 

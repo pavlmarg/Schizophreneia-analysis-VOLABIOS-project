@@ -1,2 +1,2 @@
 Algorithm,Best Parameters,Test ROC-AUC,Test F1 (Macro Avg)
-LightGBM (Schizophrenia vs. Other),"{'learning_rate': 0.02, 'max_depth': 3, 'n_estimators': 150}",0.784,0.735
+LightGBM (Schizophrenia vs. Other),"{'learning_rate': 0.02, 'max_depth': 3, 'n_estimators': 150}",0.784,0.765

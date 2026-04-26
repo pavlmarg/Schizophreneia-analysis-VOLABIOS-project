@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import lightgbm as lgb
 import shap
 import warnings
-from sklearn.model_selection import StratifiedKFold, train_test_split, GridSearchCV
+from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.feature_selection import RFECV
@@ -85,29 +85,24 @@ plt.close()
 X_train_optimal = X_train[selected_features]
 X_test_optimal = X_test[selected_features]
 
+# --- ΑΠΛΟΠΟΙΗΜΕΝΟ PIPELINE ΧΩΡΙΣ GRID SEARCH ---
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
-    ('clf', lgb.LGBMClassifier(class_weight='balanced', random_state=10, n_jobs=-1, verbose=-1))
+    ('clf', lgb.LGBMClassifier(
+        class_weight='balanced', 
+        random_state=10, 
+        n_jobs=-1, 
+        verbose=-1,
+        n_estimators=150,        # Οι δικές σου σταθερές παράμετροι
+        learning_rate=0.02,
+        max_depth=3
+    ))
 ])
 
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=10)
-param_grid = {
-    'clf__n_estimators': [150],
-    'clf__learning_rate': [0.02],
-    'clf__max_depth': [3]
-}
+# Απευθείας εκπαίδευση του Pipeline
+pipeline.fit(X_train_optimal, y_train)
 
-grid_search = GridSearchCV(
-    pipeline, 
-    param_grid, 
-    cv=cv, 
-    scoring='roc_auc', 
-    n_jobs=-1
-)
-grid_search.fit(X_train_optimal, y_train)
-best_pipeline = grid_search.best_estimator_
-
-y_prob = best_pipeline.predict_proba(X_test_optimal)[:, 1]
+y_prob = pipeline.predict_proba(X_test_optimal)[:, 1]
 auc_score = roc_auc_score(y_test, y_prob)
 
 thresholds = np.linspace(0.05, 0.95, 100) 
@@ -139,13 +134,15 @@ axes[1].set_ylabel('True Positive Rate')
 axes[1].set_title('ROC Curve')
 axes[1].legend()
 
-importances = best_pipeline.named_steps['clf'].booster_.feature_importance(importance_type='gain')
-importance_df = pd.DataFrame({'feature': X_train_optimal.columns, 'importance': importances})
+raw_importances = pipeline.named_steps['clf'].booster_.feature_importance(importance_type='gain')
+relative_importances = raw_importances / raw_importances.sum()
+importance_df = pd.DataFrame({'feature': X_train_optimal.columns, 'importance': relative_importances})
 importance_df = importance_df[importance_df['importance'] > 0].sort_values('importance', ascending=False).head(7)
 
 axes[2].barh(importance_df['feature'], importance_df['importance'], color='darkorange')
 axes[2].set_title('Top Drivers of Diagnosis')
-axes[2].set_xlabel('Total Gain')
+axes[2].set_xlabel('Relative Feature Importance') 
+axes[2].set_xlim(0, 1.0)
 axes[2].invert_yaxis()
 
 plt.tight_layout()
@@ -154,14 +151,14 @@ plt.close()
 
 summary = {
     'Algorithm': 'LightGBM (Schizophrenia vs. Other)',
-    'Best Parameters': str({k.replace('clf__', ''): v for k, v in grid_search.best_params_.items()}),
+    'Best Parameters': "{'learning_rate': 0.02, 'max_depth': 3, 'n_estimators': 150}",
     'Test ROC-AUC': f"{auc_score:.3f}",
     'Test F1 (Macro Avg)': f"{best_macro_f1:.3f}" 
 }
 pd.DataFrame([summary]).to_csv('outputs/summary_lightgbm_diagnosis.csv', index=False)
 
-lgbm_model = best_pipeline.named_steps['clf']
-model_scaler = best_pipeline.named_steps['scaler']
+lgbm_model = pipeline.named_steps['clf']
+model_scaler = pipeline.named_steps['scaler']
 
 X_test_scaled = model_scaler.transform(X_test_optimal)
 X_test_scaled_df = pd.DataFrame(X_test_scaled, columns=X_test_optimal.columns)

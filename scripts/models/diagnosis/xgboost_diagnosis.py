@@ -4,12 +4,11 @@ import matplotlib.pyplot as plt
 import xgboost as xgb
 import shap
 import warnings
-from sklearn.model_selection import StratifiedKFold, train_test_split, GridSearchCV
+from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.feature_selection import RFECV
 from sklearn.metrics import roc_auc_score, roc_curve, confusion_matrix, ConfusionMatrixDisplay, f1_score
-
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -55,7 +54,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 
-
 scale_weight = (len(y_train) - y_train.sum()) / y_train.sum()
 
 xgb_core = xgb.XGBClassifier(
@@ -80,51 +78,27 @@ rfecv.fit(X_train_scaled, y_train)
 selected_features = X.columns[rfecv.support_]
 optimal_num_features = rfecv.n_features_
 
-plt.figure(figsize=(10, 6))
-plt.title('Recursive Feature Elimination (RFECV) - XGBoost', fontsize=14, fontweight='bold')
-plt.xlabel('Number of Selected Features')
-plt.ylabel('Cross-Validated ROC-AUC')
-cv_scores = rfecv.cv_results_['mean_test_score']
-plt.plot(range(3, len(cv_scores) + 3), cv_scores, marker='o', color='darkorange', lw=2)
-plt.axvline(x=optimal_num_features, color='red', linestyle='--', label=f'Optimal: {optimal_num_features} Features')
-plt.legend()
-plt.grid(True, linestyle='--', alpha=0.7)
-plt.tight_layout()
-plt.savefig('outputs/rfecv_plot_xgboost.png', dpi=150)
-plt.close()
-
 X_train_optimal = X_train[selected_features]
 X_test_optimal = X_test[selected_features]
 
+# --- ΑΠΛΟΠΟΙΗΜΕΝΟ PIPELINE ΧΩΡΙΣ GRID SEARCH ---
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
     ('clf', xgb.XGBClassifier(
         scale_pos_weight=scale_weight, 
         random_state=10, 
         n_jobs=-1, 
-        eval_metric='logloss'
+        eval_metric='logloss',
+        n_estimators=150,       # Οι δικές σου σταθερές παράμετροι μπαίνουν απευθείας εδώ
+        learning_rate=0.01,
+        max_depth=2
     ))
 ])
 
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=10)
-param_grid = {
-    'clf__n_estimators': [150],
-    'clf__learning_rate': [0.01],
-    'clf__max_depth': [2]
-}
+# Απευθείας εκπαίδευση του Pipeline
+pipeline.fit(X_train_optimal, y_train)
 
-grid_search = GridSearchCV(
-    pipeline, 
-    param_grid, 
-    cv=cv, 
-    scoring='roc_auc', 
-    n_jobs=-1
-)
-
-grid_search.fit(X_train_optimal, y_train)
-best_pipeline = grid_search.best_estimator_
-
-y_prob = best_pipeline.predict_proba(X_test_optimal)[:, 1]
+y_prob = pipeline.predict_proba(X_test_optimal)[:, 1]
 auc_score = roc_auc_score(y_test, y_prob)
 
 thresholds = np.linspace(0.05, 0.95, 100) 
@@ -156,7 +130,7 @@ axes[1].set_ylabel('True Positive Rate')
 axes[1].set_title('ROC Curve')
 axes[1].legend()
 
-importances = best_pipeline.named_steps['clf'].feature_importances_
+importances = pipeline.named_steps['clf'].feature_importances_
 importance_df = pd.DataFrame({'feature': X_train_optimal.columns, 'importance': importances})
 importance_df = importance_df[importance_df['importance'] > 0].sort_values('importance', ascending=False)
 
@@ -171,14 +145,14 @@ plt.close()
 
 summary = {
     'Algorithm': 'XGBoost (Schizophrenia vs. Other)',
-    'Best Parameters': str({k.replace('clf__', ''): v for k, v in grid_search.best_params_.items()}),
+    'Best Parameters': "{'learning_rate': 0.01, 'max_depth': 2, 'n_estimators': 150}",
     'Test ROC-AUC': f"{auc_score:.3f}",
     'Test F1 (Macro Avg)': f"{best_macro_f1:.3f}" 
 }
 pd.DataFrame([summary]).to_csv('outputs/summary_xgboost_diagnosis.csv', index=False)
 
-xgb_model = best_pipeline.named_steps['clf']
-model_scaler = best_pipeline.named_steps['scaler']
+xgb_model = pipeline.named_steps['clf']
+model_scaler = pipeline.named_steps['scaler']
 
 X_test_scaled = model_scaler.transform(X_test_optimal)
 X_test_scaled_df = pd.DataFrame(X_test_scaled, columns=X_test_optimal.columns)
@@ -186,10 +160,8 @@ X_test_scaled_df = pd.DataFrame(X_test_scaled, columns=X_test_optimal.columns)
 explainer = shap.TreeExplainer(xgb_model)
 shap_values = explainer.shap_values(X_test_scaled_df)
 
-# To XGBoost επιστρέφει πάντα τον πίνακα κατευθείαν
 shap_values_pos = shap_values
 
-# Αν το expected_value έρθει ως array/list, παίρνουμε το 1ο στοιχείο
 base_value = explainer.expected_value
 if isinstance(base_value, (np.ndarray, list)):
     base_value = base_value[0]

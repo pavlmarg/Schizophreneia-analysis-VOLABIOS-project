@@ -93,7 +93,7 @@ pipeline = Pipeline([
         random_state=10, 
         n_jobs=-1, 
         verbose=-1,
-        n_estimators=150,        # Οι δικές σου σταθερές παράμετροι
+        n_estimators=150,        
         learning_rate=0.02,
         max_depth=3
     ))
@@ -180,7 +180,9 @@ plt.tight_layout()
 plt.savefig('outputs/shap_summary_plot.png', dpi=150, bbox_inches='tight')
 plt.close()
 
-patient_idx = 0
+patient_idx = 1
+original_index = X_test_optimal.index[patient_idx]
+real_person_id = df.loc[original_index, 'person_id']
 plt.figure(figsize=(12, 4))
 shap.force_plot(
     base_value, 
@@ -189,6 +191,6 @@ shap.force_plot(
     matplotlib=True,
     show=False
 )
-plt.title(f"SHAP Force Plot: Explanation for Patient {patient_idx}", y=1.4, fontweight='bold')
-plt.savefig(f'outputs/shap_force_plot_patient_{patient_idx}.png', dpi=150, bbox_inches='tight')
+plt.title(f"SHAP Force Plot: Explanation for Patient {real_person_id}", y=1.4, fontweight='bold')
+plt.savefig(f'outputs/shap_force_plot_patient_{real_person_id}.png', dpi=150, bbox_inches='tight')
 plt.close()

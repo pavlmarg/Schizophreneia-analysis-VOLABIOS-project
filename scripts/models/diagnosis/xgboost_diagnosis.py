@@ -173,7 +173,9 @@ plt.tight_layout()
 plt.savefig('outputs/shap_summary_plot_xgboost.png', dpi=150, bbox_inches='tight')
 plt.close()
 
-patient_idx = 0
+patient_idx = 1
+original_index = X_test_optimal.index[patient_idx]
+real_person_id = df.loc[original_index, 'person_id']
 plt.figure(figsize=(12, 4))
 shap.force_plot(
     base_value, 
@@ -182,6 +184,6 @@ shap.force_plot(
     matplotlib=True,
     show=False
 )
-plt.title(f"SHAP Force Plot: Explanation for Patient {patient_idx} (XGBoost)", y=1.4, fontweight='bold')
-plt.savefig(f'outputs/shap_force_plot_patient_{patient_idx}_xgboost.png', dpi=150, bbox_inches='tight')
+plt.title(f"SHAP Force Plot: Explanation for Person ID {real_person_id}", y=1.4, fontweight='bold')
+plt.savefig(f'outputs/shap_force_plot_patient_{real_person_id}_xgboost.png', dpi=150, bbox_inches='tight')
 plt.close()

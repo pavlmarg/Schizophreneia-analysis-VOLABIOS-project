@@ -8,7 +8,7 @@ warnings.filterwarnings('ignore')
 # ==========================================
 # 1. SETUP & PATHS
 # ==========================================
-data_dir = 'data_files'
+data_dir = 'data_files/raw'
 processed_dir = 'data_processed/results_univ'
 os.makedirs(processed_dir, exist_ok=True)
 
@@ -31,8 +31,7 @@ death = pd.read_csv(os.path.join(data_dir, 'death.csv'))
 visit['visit_start_date'] = pd.to_datetime(visit['visit_start_date'])
 first_visits = visit.sort_values('visit_start_date').groupby('person_id').first().reset_index()
 
-df = pd.merge(person[['person_id', 'gender_concept_id', 'year_of_birth']], 
-              first_visits[['person_id', 'visit_start_date']], on='person_id')
+df = pd.merge(person[['person_id', 'gender_concept_id', 'year_of_birth']], first_visits[['person_id', 'visit_start_date']], on='person_id')
 df['gender'] = df['gender_concept_id'].map({8507: 'Male', 8532: 'Female'})
 df['baseline_age'] = df['visit_start_date'].dt.year - df['year_of_birth']
 
@@ -54,7 +53,6 @@ def extract_obs(pattern, col_name, v_map=None, use_string_col=False):
     temp = obs[obs['observation_source_value'].str.contains(pattern, case=False, na=False)].copy()
     
     if use_string_col:
-        # Pull answer directly from value_as_string (Used for Socioeconomic Status)
         if v_map:
             temp[col_name] = temp['value_as_string'].astype(str).str.lower().str.strip().map(v_map)
         else:
@@ -120,21 +118,34 @@ diag_cond = cond[['person_id', 'condition_concept_id']].drop_duplicates(subset=[
 diag_cond['diagnosis'] = diag_cond['condition_concept_id'].map(cond_map)
 df = pd.merge(df, diag_cond[['person_id', 'diagnosis']], on='person_id', how='left')
 
-# E. 10-YEAR OUTCOMES & ATTRITION 
+# ==========================================
+# E. 10-YEAR OUTCOMES & ATTRITION (VISIT-BASED LOGIC)
+# ==========================================
+
+
+visit_counts = visit['person_id'].value_counts()
+returned_ids = set(visit_counts[visit_counts > 1].index)
+
 recovery_obs = obs[obs['observation_source_value'] == 'recovery10m'][['person_id', 'value_as_string']]
 recovery_obs = recovery_obs.rename(columns={'value_as_string': 'recovery_status'})
+
 deceased_ids = death['person_id'].unique()
 
 def determine_attrition(row):
-    if pd.notna(row['recovery_status']):
+    if row['person_id'] in returned_ids:
         return 'Returned for Follow-up'
     elif row['person_id'] in deceased_ids:
         return 'Deceased'
     else:
         return 'Withdrew / Lost to Follow-up'
 
+
 df = pd.merge(df, recovery_obs, on='person_id', how='left')
+
 df['attrition_status'] = df.apply(determine_attrition, axis=1)
+
+mask_returned_missing = (df['attrition_status'] == 'Returned for Follow-up') & (df['recovery_status'].isna())
+df.loc[mask_returned_missing, 'recovery_status'] = 'Unknown'
 
 # Save Master File
 df.to_csv(os.path.join(processed_dir, 'master_baseline_comprehensive.csv'), index=False)

@@ -9,8 +9,8 @@ import os
 output_dir = 'results/results_biv/pictures'
 
 # Load datasets
-df_base = pd.read_csv('data_processed/csv_files/master_baseline_comprehensive.csv')
-df_follow = pd.read_csv('data_processed/csv_files/followup_10y_data.csv')
+df_base = pd.read_csv('data_files/data_processed/csv_files/master_baseline_comprehensive.csv')
+df_follow = pd.read_csv('data_files/data_processed/csv_files/followup_10y_data.csv')
 
 # Merge
 df = pd.merge(df_base, df_follow[['person_id', 'recovery_status_10y']], on='person_id', how='left')
@@ -74,7 +74,7 @@ for var in num_vars:
             sns.violinplot(x='recovery_status_10y', y=var, data=df_ana, inner=None, palette='pastel', alpha=0.4)
             sns.swarmplot(x='recovery_status_10y', y=var, data=df_ana, color="0.3", size=4)
             
-            plt.title(f'Baseline {var} vs. 10y Outcome\n(p-value: {p:.4f})', fontsize=14, fontweight='bold')
+            plt.title(f'Baseline {var} vs. 10y Outcome\n', fontsize=14, fontweight='bold')
             plt.xlabel("Recovery Status", fontsize=12)
             plt.ylabel(f"{var} Score", fontsize=12)
             
@@ -123,7 +123,7 @@ for var in cat_vars:
                     ax.text(patch.get_x() + width/2, patch.get_y() + height/2, f'{height:.1f}%', 
                             ha='center', va='center', color='white', fontweight='bold')
             
-            plt.title(f'{var} vs. Recovery Status\n(p-value: {p:.4f})', fontweight='bold', fontsize=14)
+            plt.title(f'{var} vs. Recovery Status\n', fontweight='bold', fontsize=14)
             plt.ylabel('Group Proportion (%)')
             plt.legend(title="Outcome", loc='upper left', bbox_to_anchor=(1, 1))
             plt.tight_layout()

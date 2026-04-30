@@ -23,9 +23,10 @@ hospital_admission,Admitted,195,63.52
 hospital_admission,Avoided,112,36.48
 cannabis_use,No,171,55.7
 cannabis_use,Yes,136,44.3
-attrition_status,Returned for Follow-up,169,55.05
-attrition_status,Withdrew / Lost to Follow-up,128,41.69
+attrition_status,Returned for Follow-up,210,68.4
+attrition_status,Withdrew / Lost to Follow-up,87,28.34
 attrition_status,Deceased,10,3.26
-recovery_status,,138,44.95
 recovery_status,Not recovered,111,36.16
+recovery_status,,97,31.6
 recovery_status,Recovered,58,18.89
+recovery_status,Unknown,41,13.36

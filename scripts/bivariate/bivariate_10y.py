@@ -6,7 +6,7 @@ from scipy.stats import ttest_rel
 import os
 
 # 1. SETUP
-output_dir = 'results/results_biv_10y/pictures'
+output_dir = 'results/results_biv/pictures'
 os.makedirs(output_dir, exist_ok=True)
 
 df_base = pd.read_csv('data_processed/csv_files/master_baseline_comprehensive.csv')
@@ -39,7 +39,7 @@ for base_var, follow_var in pairs:
     temp = df_not_rec[[base_var, follow_var]].dropna()
     
     if len(temp) >= 2:
-        # Paired T-test (Same patient at two different times)
+        
         stat, p = ttest_rel(temp[base_var], temp[follow_var])
         
         longitudinal_report.append({

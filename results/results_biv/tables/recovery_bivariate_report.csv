@@ -1,9 +1,6 @@
 Variable,Type,Recovered_N,Recovered_Mean,Recovered_SD,NotRecovered_N,NotRecovered_Mean,NotRecovered_SD,p_value,Details (Count/%)
 baseline_age,Numerical,58,28.79,7.3,111,29.81,9.38,0.4728,
 BPRS_Total,Numerical,58,60.67,13.29,111,61.64,13.23,0.6529,
-BPRS_Positive_Onset,Numerical,58,7.12,2.32,111,7.57,2.38,0.2445,
-BPRS_Negative_Onset,Numerical,58,5.6,5.42,111,6.31,6.0,0.4563,
-BPRS_Disorganized_Onset,Numerical,58,5.33,3.39,111,5.78,3.59,0.4254,
 DUI_months,Numerical,58,23.31,32.25,106,25.95,31.72,0.6135,
 DUP_months,Numerical,58,13.3,28.27,110,11.64,23.5,0.6853,
 DAP_months,Numerical,57,17.08,28.87,110,17.75,24.79,0.8754,

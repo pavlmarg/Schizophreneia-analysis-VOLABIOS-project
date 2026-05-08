@@ -1,57 +1,59 @@
 import pandas as pd
 import os
 
-data_dir = 'data_files'
+# 1. Φόρτωση αρχείων 
+master_df = pd.read_csv('data_files/data_processed/csv_files/baseline_simplified_data.csv') 
+meas_df = pd.read_csv('data_files/data_processed/csv_files/measurement.csv') 
 
-datasets = {}
+# 2. Ορίζουμε τι ψάχνουμε με βάση το SOURCE VALUE
+source_map = {
+    'positive0': 'BPRS_Positive_Onset',
+    'negative0': 'BPRS_Negative_Onset',
+    'disorgan0': 'BPRS_Disorganized_Onset'
+}
 
-# 1. Loop through every file in the directory
-try:
-    for filename in os.listdir(data_dir):
-        if filename.endswith('.csv'):
-            file_path = os.path.join(data_dir, filename)
-            
-            # Load the dataframe
-            df = pd.read_csv(file_path)
-            original_col_count = df.shape[1]
-            
-            # 2. Drop columns that are 100% missing (MCAR)
-            df = df.dropna(axis=1, how='all')
-            after_nan_count = df.shape[1]
-            
-            # 3. Drop columns where all data is the exact same (Zero Variance)
-            # dropna=False ensures we don't accidentally drop binary flags (1.0 and NaN)
-            df = df.loc[:, df.nunique(dropna=False) > 1]
-            final_col_count = df.shape[1]
-            
-            # Save the cleaned dataframe to our dictionary
-            datasets[filename] = df
-            
-            # Print a summary report for each file
-            print(f"--- {filename} ---")
-            print(f"Original columns: {original_col_count}")
-            print(f"Dropped {original_col_count - after_nan_count} completely empty columns.")
-            print(f"Dropped {after_nan_count - final_col_count} zero-variance columns.")
-            print(f"Remaining active columns: {final_col_count}\n")
-            
-            # Define the new target directory for cleaned files
-            processed_dir = 'data_processed'
+meas_df['source_clean'] = meas_df['measurement_source_value'].astype(str).str.lower().str.strip()
 
-            # Safely create the folder if it doesn't already exist (prevents FileNotFoundError)
-            os.makedirs(processed_dir, exist_ok=True)
+# 3. Φιλτράρισμα και Pivot
+target_meas = meas_df[meas_df['source_clean'].isin(source_map.keys())].copy()
+target_meas['metric_name'] = target_meas['source_clean'].map(source_map)
 
-            # Loop through our dictionary of cleaned dataframes and save them
-            for filename, cleaned_df in datasets.items():
-            # Build the full file path (e.g., 'data_processed/person.csv')
-                save_path = os.path.join(processed_dir, filename)
-    
-                # Save the dataframe without the pandas index column
-                cleaned_df.to_csv(save_path, index=False)
-    
-                print(f"Successfully saved cleaned {filename} to {processed_dir}/")
+new_columns = target_meas.pivot_table(
+    index='person_id', 
+    columns='metric_name', 
+    values='value_as_number'
+).reset_index()
 
-            print("\nAll datasets successfully processed and saved!")
+# 4. Ενώνουμε τις νέες στήλες (μπαίνουν στο τέλος)
+final_df = pd.merge(master_df, new_columns, on='person_id', how='left')
 
-except Exception as e:
-    print(f"Error loading files: {e}")
-    
+# ---------------------------------------------------------
+# 5. ΑΝΑΔΙΑΤΑΞΗ ΣΤΗΛΩΝ (Δυναμική και ασφαλής μέθοδος)
+# ---------------------------------------------------------
+cols = final_df.columns.tolist()
+
+# Βρίσκουμε ΠΟΙΕΣ από τις 3 νέες στήλες προστέθηκαν ΠΡΑΓΜΑΤΙΚΑ στο τελικό αρχείο
+added_cols = [col_name for col_name in source_map.values() if col_name in cols]
+
+# Τις αφαιρούμε από το τέλος της λίστας
+for col in added_cols:
+    cols.remove(col)
+
+# Ελέγχουμε αν υπάρχει το BPRS_Total στο αρχείο
+if 'BPRS_Total' in cols:
+    bprs_index = cols.index('BPRS_Total')
+    # Βάζουμε όσες στήλες βρήκαμε ακριβώς δίπλα του
+    for i, col in enumerate(added_cols):
+        cols.insert(bprs_index + 1 + i, col)
+else:
+    # Αν για κάποιο λόγο λείπει το BPRS_Total, απλά τις ξαναβάζουμε στο τέλος
+    cols.extend(added_cols)
+
+# Εφαρμόζουμε τη νέα, ασφαλή σειρά στο DataFrame
+final_df = final_df[cols]
+# ---------------------------------------------------------
+# 6. Αποθήκευση
+output_path = 'data_files/data_processed/csv_files/baseline_simplified_data.'
+final_df.to_csv(output_path, index=False)
+
+print("Τέλεια! Οι 3 νέες στήλες προστέθηκαν και μετακινήθηκαν ακριβώς δίπλα στο BPRS_Total.")

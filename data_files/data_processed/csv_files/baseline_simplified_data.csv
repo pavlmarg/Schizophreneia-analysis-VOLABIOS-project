@@ -1,0 +1,308 @@
+person_id,baseline_age,BPRS_Total,DAP_months,DAT_months,DUI_months,DUP_months,SANS_Total,SAPS_Total,cannabis_use,family_hx_psychosis,hospital_admission,diagnosis,recovery_status,attrition_status,BPRS_Disorganized_Onset,BPRS_Negative_Onset,BPRS_Positive_Onset
+1,23,43.0,3.661190965,2.661190965,2.0,1.0,6.0,6.0,No,No,Avoided,Schizophreniform,Recovered,Returned for Follow-up,2.0,5.0,4.0
+2,33,46.0,1.584188912,1.084188912,0.5,0.5,5.0,9.0,No,Yes,Avoided,Schizophreniform,Not recovered,Returned for Follow-up,1.0,4.0,8.0
+3,30,56.0,1.558521561,0.558521561,36.0,1.0,2.0,11.0,No,No,Admitted,Brief reactive psychosis,Not recovered,Returned for Follow-up,7.0,0.0,4.0
+4,25,65.0,10.66940452,6.669404517,18.0,4.0,10.0,14.0,No,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,6.0,7.0,8.0
+5,23,60.0,15.58110883,3.58110883,28.0,12.0,22.0,11.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,7.0,18.0,4.0
+6,17,56.0,8.490759754,7.490759754,1.0,1.0,5.0,10.0,No,No,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,6.0,5.0,4.0
+7,18,48.0,19.26694045,18.26694045,12.0,1.0,19.0,12.0,Yes,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,3.0,15.0,9.0
+8,20,53.0,5.698151951,4.698151951,42.0,1.0,10.0,12.0,Yes,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,2.0,10.0,10.0
+9,21,68.0,14.57905544,10.57905544,72.0,4.0,5.0,19.0,Yes,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,9.0,5.0,10.0
+10,19,43.0,3.229979466,0.229979466,,3.0,6.0,4.0,No,No,Avoided,Brief reactive psychosis,Not recovered,Returned for Follow-up,0.0,6.0,4.0
+11,23,44.0,1.459958932,0.459958932,3.0,1.0,5.0,10.0,Yes,Yes,Avoided,Schizophreniform,Recovered,Returned for Follow-up,3.0,5.0,7.0
+12,26,57.0,47.75564682,0.755646817,48.0,47.0,15.0,13.0,No,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,8.0,15.0,5.0
+13,20,51.0,0.762833676,0.262833676,0.5,0.5,2.0,14.0,Yes,Yes,Admitted,Brief reactive psychosis,,Withdrew / Lost to Follow-up,8.0,0.0,6.0
+14,17,65.0,10.23408624,2.234086242,26.0,8.0,20.0,16.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,7.0,17.0,9.0
+15,18,41.0,29.66324435,27.66324435,3.0,2.0,1.0,8.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,0.0,1.0,8.0
+16,23,67.0,10.44969199,3.449691992,48.0,7.0,10.0,16.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,7.0,9.0,9.0
+18,34,57.0,4.022587269,3.022587269,20.0,1.0,2.0,12.0,Yes,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,8.0,2.0,4.0
+19,40,38.0,3.683983573,3.383983573,0.3,0.3,1.0,5.0,No,Yes,Avoided,Non-organic psychosis,Not recovered,Returned for Follow-up,1.0,0.0,4.0
+20,15,87.0,7.394250513,0.394250513,7.0,7.0,20.0,18.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,8.0,15.0,10.0
+21,24,69.0,1.624229979,0.624229979,1.0,1.0,11.0,16.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,8.0,11.0,8.0
+22,21,61.0,9.149897331,1.149897331,,8.0,24.0,6.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,1.0,20.0,5.0
+23,21,48.0,1.821355236,0.821355236,1.0,1.0,6.0,8.0,Yes,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,0.0,6.0,8.0
+24,33,61.0,2.511293634,1.511293634,2.0,1.0,11.0,13.0,No,No,Avoided,Schizophreniform,Recovered,Returned for Follow-up,8.0,7.0,5.0
+25,21,68.0,9.997946612,6.997946612,10.0,3.0,23.0,15.0,Yes,No,Admitted,Schizophrenia,Recovered,Returned for Follow-up,7.0,19.0,8.0
+26,25,80.0,7.271047228,4.271047228,70.0,3.0,19.0,14.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,4.0,16.0,10.0
+27,26,63.0,5.895277207,4.895277207,11.0,1.0,3.0,17.0,Yes,Yes,Admitted,Schizophrenia,Unknown,Returned for Follow-up,7.0,0.0,10.0
+28,28,60.0,9.271047228,4.271047228,7.0,5.0,7.0,17.0,No,No,Admitted,Schizophreniform,,Withdrew / Lost to Follow-up,12.0,4.0,5.0
+29,24,55.0,4.332648871,2.332648871,23.0,2.0,6.0,13.0,No,No,Avoided,Schizophreniform,Recovered,Returned for Follow-up,3.0,6.0,10.0
+30,22,81.0,2.689938398,0.689938398,12.0,2.0,8.0,23.0,Yes,Yes,Admitted,Schizophreniform,Unknown,Returned for Follow-up,13.0,8.0,10.0
+31,23,78.0,5.80698152,1.80698152,4.0,4.0,16.0,14.0,No,Yes,Avoided,Schizophrenia,Recovered,Returned for Follow-up,4.0,16.0,10.0
+32,21,72.0,4.54825462,3.54825462,48.0,1.0,0.0,18.0,Yes,No,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,8.0,0.0,10.0
+33,26,59.0,2.996919918,2.496919918,2.0,0.5,16.0,5.0,No,Yes,Avoided,Schizophrenia,Unknown,Returned for Follow-up,0.0,16.0,5.0
+34,21,58.0,6.952772074,0.952772074,36.0,6.0,11.0,10.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,11.0,5.0
+35,16,53.0,29.64065708,24.64065708,18.0,5.0,12.0,11.0,No,No,Admitted,Schizophrenia,Recovered,Returned for Follow-up,1.0,8.0,10.0
+36,19,73.0,6.80698152,1.80698152,7.0,5.0,25.0,12.0,Yes,No,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,2.0,20.0,10.0
+38,23,50.0,16.7926078,2.792607803,26.0,14.0,4.0,20.0,Yes,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,10.0,4.0,10.0
+40,19,75.0,2.511293634,1.511293634,70.0,1.0,9.0,14.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,8.0,5.0,6.0
+41,40,44.0,48.65708419,0.657084189,,48.0,5.0,9.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,4.0,5.0,5.0
+42,39,49.0,125.9137577,5.9137577,210.0,120.0,3.0,9.0,No,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,4.0,3.0,5.0
+43,30,58.0,39.1211499,3.121149897,36.0,36.0,0.0,13.0,No,Yes,Admitted,Schizophrenia,Unknown,Returned for Follow-up,8.0,0.0,5.0
+44,24,74.0,3.102669405,2.102669405,12.0,1.0,1.0,14.0,No,Yes,Admitted,Non-organic psychosis,Not recovered,Returned for Follow-up,9.0,0.0,5.0
+45,36,62.0,206.4640657,2.464065708,204.0,204.0,9.0,10.0,No,Yes,Avoided,Schizophrenia,Recovered,Returned for Follow-up,3.0,9.0,7.0
+46,28,50.0,1.985626283,0.985626283,120.0,1.0,2.0,13.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,3.0,2.0,10.0
+47,37,56.0,7.209445585,6.209445585,13.0,1.0,9.0,14.0,No,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,4.0,9.0,10.0
+48,37,63.0,,,60.0,24.0,11.0,11.0,No,Yes,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,6.0,10.0,5.0
+49,38,62.0,49.24845996,1.248459959,84.0,48.0,11.0,15.0,No,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,5.0,10.0,10.0
+50,21,50.0,14.26694045,2.266940452,36.0,12.0,11.0,4.0,No,No,Avoided,Non-organic psychosis,Not recovered,Returned for Follow-up,2.0,11.0,2.0
+51,25,56.0,0.959958932,0.459958932,51.0,0.5,1.0,8.0,No,No,Admitted,Schizoaffective,Recovered,Returned for Follow-up,3.0,0.0,5.0
+52,28,56.0,8.952772074,0.952772074,15.0,8.0,10.0,18.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,8.0,10.0,10.0
+53,22,72.0,9.662217659,7.162217659,2.5,2.5,8.0,19.0,Yes,No,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,11.0,4.0,8.0
+54,28,47.0,7.330800821,7.030800821,0.5,0.3,2.0,12.0,No,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,2.0,2.0,10.0
+55,46,51.0,15.51540041,3.515400411,12.0,12.0,20.0,8.0,No,No,Avoided,Brief reactive psychosis,Unknown,Returned for Follow-up,3.0,16.0,5.0
+56,20,54.0,6.657084189,0.657084189,48.0,6.0,15.0,5.0,No,No,Admitted,Schizophreniform,,Withdrew / Lost to Follow-up,3.0,15.0,2.0
+57,22,52.0,3.887063655,0.887063655,6.0,3.0,0.0,17.0,Yes,No,Avoided,Schizophreniform,Not recovered,Returned for Follow-up,7.0,0.0,10.0
+58,36,43.0,36.62422998,0.624229979,48.0,36.0,6.0,6.0,No,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,0.0,6.0,6.0
+59,27,69.0,21.48973306,18.98973306,28.0,2.5,13.0,14.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,4.0,11.0,10.0
+60,22,71.0,24.82135524,0.821355236,72.0,24.0,9.0,19.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,9.0,9.0,10.0
+61,22,42.0,3.445585216,1.445585216,2.0,2.0,2.0,5.0,Yes,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,0.0,2.0,5.0
+62,21,36.0,23.0513347,17.0513347,6.0,6.0,3.0,8.0,Yes,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,0.0,3.0,8.0
+63,19,75.0,6.628336756,2.628336756,4.0,4.0,13.0,14.0,Yes,No,Admitted,Schizophreniform,Recovered,Returned for Follow-up,4.0,8.0,10.0
+65,22,52.0,40.5687885,29.5687885,23.0,11.0,3.0,13.0,No,Yes,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,3.0,3.0,10.0
+66,23,65.0,11.66940452,6.669404517,15.0,5.0,12.0,18.0,No,No,Admitted,Schizophreniform,,Deceased,10.0,12.0,8.0
+67,17,71.0,1.919917864,0.919917864,2.0,1.0,16.0,17.0,Yes,No,Avoided,Schizophreniform,Not recovered,Returned for Follow-up,7.0,16.0,10.0
+68,20,53.0,23.19096509,5.190965092,60.0,18.0,8.0,17.0,Yes,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,7.0,8.0,10.0
+69,34,61.0,15.22587269,14.22587269,1.0,1.0,0.0,10.0,No,No,Admitted,Schizophreniform,Unknown,Returned for Follow-up,5.0,0.0,5.0
+70,27,46.0,30.54825462,3.54825462,30.0,27.0,1.0,12.0,Yes,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,7.0,1.0,5.0
+71,33,59.0,,,48.0,36.0,9.0,13.0,No,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,8.0,9.0,5.0
+72,25,77.0,14.50308008,13.50308008,1.5,1.0,17.0,10.0,No,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,0.0,16.0,10.0
+73,22,64.0,11.14989733,1.149897331,12.0,10.0,21.0,7.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,2.0,20.0,5.0
+74,21,70.0,22.49281314,16.49281314,9.0,6.0,11.0,15.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,10.0,9.0,5.0
+75,16,51.0,9.675564682,1.675564682,36.0,8.0,13.0,8.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,2.0,13.0,6.0
+76,23,50.0,10.66119097,2.661190965,27.0,8.0,19.0,5.0,No,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,0.0,18.0,5.0
+77,23,67.0,15.75770021,9.757700205,11.0,6.0,21.0,20.0,No,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,10.0,20.0,10.0
+78,27,55.0,31.97125257,1.971252567,48.0,30.0,1.0,18.0,Yes,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,8.0,1.0,10.0
+79,31,81.0,3.328542094,0.328542094,36.0,3.0,6.0,11.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,6.0,6.0
+80,21,75.0,8.975359343,3.975359343,20.0,5.0,11.0,15.0,Yes,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,10.0,10.0,5.0
+81,24,49.0,8.205338809,4.205338809,18.0,4.0,7.0,5.0,Yes,No,Avoided,Schizophreniform,Not recovered,Returned for Follow-up,0.0,7.0,5.0
+82,38,52.0,5.993839836,4.993839836,1.0,1.0,5.0,7.0,No,Yes,Admitted,Schizophreniform,Recovered,Returned for Follow-up,2.0,4.0,5.0
+83,30,51.0,15.8110883,3.811088296,30.0,12.0,1.0,19.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,14.0,1.0,5.0
+84,26,63.0,,,10.0,10.0,12.0,12.0,Yes,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,2.0,7.0,10.0
+85,34,43.0,38.69404517,2.694045175,48.0,36.0,0.0,9.0,Yes,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,4.0,0.0,5.0
+86,19,48.0,23.40041068,11.40041068,12.0,12.0,11.0,13.0,Yes,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,3.0,11.0,10.0
+87,19,64.0,3.661190965,2.661190965,1.0,1.0,7.0,16.0,Yes,No,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,6.0,6.0,10.0
+88,57,63.0,184.7638604,4.76386037,180.0,180.0,8.0,15.0,No,No,Admitted,Schizophrenia,,Deceased,5.0,7.0,10.0
+89,34,43.0,12.0698152,2.069815195,60.0,10.0,2.0,12.0,No,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,3.0,0.0,9.0
+90,19,64.0,8.819301848,7.819301848,12.0,1.0,2.0,17.0,No,No,Admitted,Schizophreniform,,Deceased,7.0,2.0,10.0
+91,28,65.0,1.09137577,0.59137577,0.5,0.5,3.0,17.0,No,Yes,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,12.0,0.0,5.0
+92,28,40.0,1.919917864,0.919917864,15.0,1.0,4.0,10.0,No,No,Avoided,Schizophreniform,Unknown,Returned for Follow-up,0.0,4.0,10.0
+93,18,56.0,17.86858316,15.86858316,3.0,2.0,16.0,11.0,Yes,Yes,Admitted,Schizophrenia,,Deceased,1.0,15.0,10.0
+94,23,46.0,,,36.0,36.0,3.0,7.0,No,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,2.0,3.0,5.0
+95,34,62.0,14.31416838,1.314168378,27.0,13.0,3.0,14.0,No,No,Admitted,Schizophrenia,Recovered,Returned for Follow-up,4.0,3.0,10.0
+96,29,47.0,2.985626283,0.985626283,19.0,2.0,3.0,9.0,No,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,4.0,3.0,5.0
+97,17,55.0,9.726899384,2.726899384,9.0,7.0,0.0,11.0,Yes,No,Avoided,Schizoaffective,,Withdrew / Lost to Follow-up,8.0,0.0,3.0
+98,23,64.0,15.13347023,9.133470226,24.0,6.0,0.0,18.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,8.0,0.0,10.0
+99,22,71.0,12.25256674,3.252566735,36.0,9.0,13.0,12.0,Yes,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,2.0,13.0,10.0
+100,30,50.0,1.452772074,0.952772074,0.5,0.5,0.0,9.0,Yes,No,Avoided,Brief reactive psychosis,Recovered,Returned for Follow-up,4.0,0.0,5.0
+101,30,47.0,15.06160164,14.06160164,3.0,1.0,0.0,16.0,No,No,Avoided,Schizophreniform,Not recovered,Returned for Follow-up,6.0,0.0,10.0
+102,31,62.0,74.26694045,2.266940452,120.0,72.0,6.0,15.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,5.0,10.0
+103,21,67.0,12.19096509,5.190965092,36.0,7.0,18.0,10.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,0.0,17.0,10.0
+104,25,48.0,34.7761807,10.7761807,30.0,24.0,8.0,17.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,12.0,6.0,5.0
+105,43,49.0,1.058521561,0.558521561,3.0,0.5,0.0,9.0,No,No,Admitted,Brief reactive psychosis,Recovered,Returned for Follow-up,4.0,0.0,5.0
+106,21,67.0,36.73511294,6.735112936,48.0,30.0,9.0,15.0,No,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,5.0,7.0,10.0
+107,30,46.0,14.28952772,5.289527721,12.0,9.0,0.0,9.0,No,Yes,Avoided,Schizophrenia,Recovered,Returned for Follow-up,4.0,0.0,5.0
+108,38,54.0,9.942505133,3.942505133,13.0,6.0,3.0,13.0,No,Yes,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,8.0,3.0,5.0
+109,34,62.0,17.13552361,2.135523614,60.0,15.0,9.0,11.0,Yes,No,Admitted,Schizoaffective,Not recovered,Returned for Follow-up,5.0,9.0,6.0
+110,19,60.0,3.347022587,1.347022587,2.0,2.0,1.0,10.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,0.0,5.0
+111,22,71.0,4.887063655,0.887063655,12.0,4.0,1.0,12.0,Yes,No,Admitted,Schizophrenia,,Deceased,5.0,0.0,7.0
+112,18,59.0,4.266940452,2.266940452,3.0,2.0,13.0,12.0,Yes,No,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,5.0,12.0,7.0
+113,24,60.0,,,80.0,5.0,1.0,18.0,Yes,Yes,Admitted,Schizophrenia,,Deceased,11.0,1.0,7.0
+114,24,50.0,15.16837782,2.168377823,15.0,13.0,3.0,8.0,Yes,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,3.0,2.0,5.0
+115,34,43.0,211.7125257,19.71252567,192.0,192.0,4.0,6.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,1.0,3.0,5.0
+116,23,72.0,33.59342916,9.593429158,60.0,24.0,17.0,16.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,6.0,16.0,10.0
+117,33,59.0,1.781314168,1.281314168,0.5,0.5,2.0,11.0,Yes,Yes,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,5.0,1.0,6.0
+119,18,57.0,10.50205339,9.002053388,1.5,1.5,1.0,18.0,Yes,Yes,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,12.0,0.0,6.0
+120,34,59.0,4.358316222,2.858316222,4.0,1.5,1.0,12.0,No,Yes,Admitted,Non-organic psychosis,,Withdrew / Lost to Follow-up,7.0,1.0,5.0
+121,38,45.0,1.712731006,1.412731006,0.3,0.3,0.0,10.0,No,No,Avoided,Schizophreniform,Recovered,Returned for Follow-up,5.0,0.0,5.0
+122,21,62.0,8.885010267,7.885010267,12.0,1.0,15.0,17.0,Yes,Yes,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,7.0,11.0,10.0
+123,29,53.0,19.70841889,17.70841889,2.0,2.0,7.0,12.0,No,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,4.0,7.0,8.0
+124,28,45.0,3.379876797,1.379876797,24.0,2.0,4.0,10.0,Yes,No,Admitted,Schizophreniform,,Withdrew / Lost to Follow-up,0.0,4.0,10.0
+125,22,49.0,17.40451745,13.40451745,6.0,4.0,0.0,10.0,No,Yes,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,5.0,0.0,5.0
+126,22,54.0,9.266940452,2.266940452,7.0,7.0,2.0,16.0,Yes,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,6.0,1.0,10.0
+128,20,66.0,1.485626283,0.985626283,4.0,0.5,2.0,14.0,Yes,No,Admitted,Schizophreniform,,Withdrew / Lost to Follow-up,9.0,0.0,5.0
+129,30,60.0,1.055646817,0.755646817,4.0,0.3,7.0,10.0,No,No,Avoided,Non-organic psychosis,,Withdrew / Lost to Follow-up,0.0,6.0,10.0
+130,30,65.0,0.962833676,0.262833676,0.7,0.7,0.0,17.0,Yes,No,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,9.0,0.0,8.0
+131,20,58.0,5.128336756,2.628336756,8.0,2.5,1.0,19.0,Yes,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,9.0,0.0,10.0
+132,36,59.0,1.647022587,1.347022587,3.0,0.3,6.0,13.0,No,No,Admitted,Brief reactive psychosis,Recovered,Returned for Follow-up,8.0,2.0,5.0
+133,56,63.0,25.14989733,1.149897331,48.0,24.0,1.0,20.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,10.0,0.0,10.0
+134,26,59.0,5.741273101,1.741273101,6.0,4.0,5.0,15.0,Yes,No,Admitted,Schizophreniform,,Withdrew / Lost to Follow-up,5.0,1.0,10.0
+135,25,79.0,19.34907598,10.34907598,16.0,9.0,10.0,17.0,Yes,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,7.0,5.0,10.0
+136,29,55.0,2.799794661,2.299794661,0.5,0.5,6.0,10.0,No,No,Admitted,Non-organic psychosis,Not recovered,Returned for Follow-up,0.0,1.0,10.0
+137,26,68.0,1.025667351,0.525667351,2.0,0.5,2.0,15.0,Yes,No,Admitted,Non-organic psychosis,Unknown,Returned for Follow-up,9.0,0.0,6.0
+138,43,54.0,2.295687885,0.295687885,3.0,2.0,6.0,13.0,No,No,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,3.0,5.0,10.0
+139,52,48.0,15.01848049,1.018480493,17.0,14.0,0.0,16.0,No,No,Avoided,Non-organic psychosis,Not recovered,Returned for Follow-up,6.0,0.0,10.0
+140,29,61.0,45.26283368,0.262833676,66.0,45.0,14.0,17.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,7.0,10.0,10.0
+141,30,63.0,,,84.0,22.0,11.0,10.0,Yes,No,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,0.0,10.0,10.0
+142,39,61.0,22.47946612,21.97946612,1.0,0.5,5.0,11.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,3.0,6.0
+143,25,48.0,4.617043121,1.117043121,15.0,3.5,4.0,16.0,No,Yes,Avoided,Non-organic psychosis,,Withdrew / Lost to Follow-up,6.0,3.0,10.0
+144,31,57.0,18.98767967,9.987679671,23.0,9.0,4.0,20.0,Yes,No,Admitted,Schizophrenia,Recovered,Returned for Follow-up,10.0,0.0,10.0
+145,40,68.0,40.43531828,4.435318275,48.0,36.0,3.0,11.0,No,No,Admitted,Schizophrenia,Recovered,Returned for Follow-up,5.0,0.0,6.0
+146,41,70.0,65.05954825,5.059548255,72.0,60.0,16.0,11.0,No,Yes,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,16.0,6.0
+147,28,66.0,12.84188912,10.84188912,2.0,2.0,17.0,11.0,Yes,Yes,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,16.0,6.0
+148,28,60.0,11.47843943,1.478439425,36.0,10.0,3.0,15.0,Yes,No,Admitted,Schizophreniform,,Withdrew / Lost to Follow-up,5.0,0.0,10.0
+149,29,51.0,9.702258727,6.702258727,30.0,3.0,4.0,14.0,No,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,9.0,0.0,5.0
+150,30,60.0,51.27720739,15.27720739,78.0,36.0,1.0,11.0,Yes,No,Admitted,Non-organic psychosis,,Withdrew / Lost to Follow-up,5.0,1.0,6.0
+151,35,50.0,1.515605749,1.215605749,1.5,0.3,1.0,10.0,No,No,Avoided,Schizophreniform,Recovered,Returned for Follow-up,5.0,0.0,5.0
+152,21,77.0,47.23613963,11.23613963,40.0,36.0,8.0,15.0,Yes,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,5.0,4.0,10.0
+153,26,73.0,9.36550308,2.36550308,7.0,7.0,2.0,16.0,Yes,No,Admitted,Schizophreniform,,Withdrew / Lost to Follow-up,6.0,1.0,10.0
+155,29,78.0,4.661190965,2.661190965,12.0,2.0,12.0,15.0,Yes,No,Admitted,Non-organic psychosis,Unknown,Returned for Follow-up,5.0,11.0,10.0
+156,27,57.0,7.472279261,6.472279261,5.0,1.0,10.0,11.0,No,No,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,5.0,9.0,6.0
+157,26,48.0,2.799794661,2.299794661,0.6,0.5,3.0,11.0,Yes,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,5.0,1.0,6.0
+158,28,62.0,87.51540041,3.515400411,84.0,84.0,3.0,18.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,12.0,0.0,6.0
+159,50,56.0,3.722792608,0.722792608,4.0,3.0,1.0,18.0,No,No,Admitted,Schizophreniform,Recovered,Returned for Follow-up,13.0,0.0,5.0
+160,23,72.0,13.31416838,1.314168378,18.0,12.0,4.0,22.0,Yes,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,12.0,0.0,10.0
+162,28,32.0,0.924229979,0.624229979,12.0,0.3,2.0,12.0,Yes,No,Admitted,Brief reactive psychosis,,Withdrew / Lost to Follow-up,7.0,0.0,5.0
+163,24,95.0,25.06365503,7.063655031,48.0,18.0,12.0,22.0,Yes,No,Avoided,Schizophrenia,Unknown,Returned for Follow-up,12.0,12.0,10.0
+164,29,53.0,3.026899384,2.726899384,2.0,0.3,8.0,10.0,No,No,Admitted,Non-organic psychosis,Not recovered,Returned for Follow-up,5.0,4.0,5.0
+165,33,86.0,63.28542094,3.285420945,72.0,60.0,10.0,14.0,No,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,6.0,9.0,8.0
+166,25,44.0,3.388295688,3.088295688,2.0,0.3,4.0,7.0,Yes,Yes,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,1.0,0.0,6.0
+167,28,91.0,25.54414784,1.544147844,36.0,24.0,10.0,24.0,No,No,Admitted,Schizophrenia,Recovered,Returned for Follow-up,14.0,6.0,10.0
+168,41,52.0,81.36344969,9.363449692,72.0,72.0,1.0,9.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,4.0,0.0,5.0
+169,27,70.0,2.10698152,1.80698152,1.0,0.3,5.0,19.0,Yes,No,Admitted,Schizoaffective,,Withdrew / Lost to Follow-up,9.0,4.0,10.0
+170,22,74.0,1.59137577,0.59137577,1.0,1.0,9.0,16.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,6.0,9.0,10.0
+171,39,73.0,0.759958932,0.459958932,0.3,0.3,5.0,14.0,No,No,Avoided,Brief reactive psychosis,Not recovered,Returned for Follow-up,9.0,0.0,5.0
+172,20,50.0,2.609856263,1.609856263,1.0,1.0,4.0,9.0,No,Yes,Avoided,Schizophrenia,Recovered,Returned for Follow-up,3.0,3.0,6.0
+173,41,73.0,79.42710472,0.427104723,81.0,79.0,9.0,22.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,13.0,9.0,9.0
+174,36,66.0,32.60780287,8.607802875,36.0,24.0,4.0,12.0,Yes,No,Avoided,Schizophrenia,Unknown,Returned for Follow-up,7.0,2.0,5.0
+175,22,49.0,25.33880903,13.33880903,36.0,12.0,5.0,12.0,No,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,3.0,5.0,9.0
+176,34,57.0,22.66529774,4.665297741,30.0,18.0,12.0,13.0,No,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,7.0,12.0,6.0
+177,18,73.0,5.953798768,5.453798768,1.0,0.5,6.0,19.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,9.0,4.0,10.0
+178,36,56.0,9.379876797,1.379876797,10.0,8.0,1.0,10.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,1.0,5.0
+179,22,55.0,21.41683778,3.416837782,36.0,18.0,9.0,10.0,Yes,No,Admitted,Non-organic psychosis,Unknown,Returned for Follow-up,5.0,7.0,5.0
+180,23,81.0,13.80698152,1.80698152,31.0,12.0,15.0,15.0,Yes,No,Admitted,Schizophreniform,Recovered,Returned for Follow-up,5.0,14.0,10.0
+181,29,79.0,12.29979466,2.299794661,48.0,10.0,1.0,16.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,10.0,0.0,6.0
+182,30,53.0,1.908418891,1.708418891,1.0,0.2,2.0,9.0,Yes,No,Avoided,Non-organic psychosis,,Withdrew / Lost to Follow-up,4.0,1.0,5.0
+202,50,66.0,43.39219713,7.392197125,51.0,36.0,2.0,11.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,6.0,0.0,5.0
+203,43,41.0,6.13963039,4.13963039,36.0,2.0,2.0,11.0,No,Yes,Avoided,Schizophreniform,Not recovered,Returned for Follow-up,6.0,0.0,5.0
+204,21,89.0,1.879876797,1.379876797,1.0,0.5,5.0,19.0,Yes,No,Admitted,Schizophreniform,Unknown,Returned for Follow-up,9.0,0.0,10.0
+205,42,68.0,0.894250513,0.394250513,1.0,0.5,16.0,12.0,Yes,Yes,Admitted,Brief reactive psychosis,,Withdrew / Lost to Follow-up,5.0,15.0,7.0
+207,34,76.0,10.05954825,5.059548255,24.0,5.0,14.0,10.0,No,No,Admitted,Schizophreniform,Recovered,Returned for Follow-up,4.0,10.0,6.0
+208,21,79.0,46.84188912,10.84188912,42.0,36.0,25.0,15.0,Yes,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,5.0,20.0,10.0
+209,20,53.0,2.931211499,2.431211499,12.0,0.5,5.0,16.0,Yes,No,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,6.0,0.0,10.0
+210,25,68.0,10.12936345,7.12936345,5.0,3.0,2.0,10.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,1.0,5.0
+211,33,50.0,6.820841889,6.570841889,18.0,0.25,10.0,8.0,No,No,Avoided,Schizophreniform,Not recovered,Returned for Follow-up,3.0,6.0,5.0
+212,29,60.0,4.126796715,3.876796715,9.0,0.25,20.0,5.0,No,No,Avoided,Schizophreniform,Unknown,Returned for Follow-up,0.0,16.0,5.0
+213,26,71.0,1.814168378,1.314168378,18.0,0.5,13.0,12.0,No,No,Admitted,Schizophreniform,Recovered,Returned for Follow-up,2.0,9.0,10.0
+215,23,48.0,9.121149897,3.121149897,6.0,6.0,12.0,5.0,No,Yes,Avoided,Schizophreniform,Recovered,Returned for Follow-up,0.0,9.0,5.0
+216,34,87.0,15.21560575,1.215605749,30.0,14.0,1.0,15.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,1.0,10.0
+217,22,86.0,25.97125257,1.971252567,30.0,24.0,20.0,15.0,Yes,Yes,Admitted,Schizophrenia,,Deceased,5.0,19.0,10.0
+218,31,68.0,15.91991786,0.919917864,15.0,15.0,5.0,19.0,No,No,Admitted,Schizophreniform,Unknown,Returned for Follow-up,14.0,0.0,5.0
+219,43,83.0,,1.544147844,,,23.0,20.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,10.0,18.0,10.0
+220,27,61.0,6.282340862,5.782340862,1.0,0.5,12.0,10.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,11.0,5.0
+221,37,47.0,3.919917864,0.919917864,5.0,3.0,0.0,8.0,No,No,Avoided,Schizophreniform,Unknown,Returned for Follow-up,3.0,0.0,5.0
+222,23,59.0,21.04312115,13.04312115,24.0,8.0,14.0,7.0,Yes,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,0.0,10.0,7.0
+223,34,53.0,16.38193018,10.38193018,24.0,6.0,0.0,14.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,8.0,0.0,6.0
+301,44,71.0,60.67351129,24.67351129,180.0,36.0,10.0,20.0,No,No,Avoided,Schizophrenia,Unknown,Returned for Follow-up,10.0,6.0,10.0
+302,21,57.0,2.994045175,2.694045175,18.0,0.3,4.0,19.0,Yes,No,Avoided,Schizophreniform,Unknown,Returned for Follow-up,11.0,0.0,8.0
+303,47,63.0,14.63449692,13.63449692,8.0,1.0,4.0,15.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,7.0,4.0,8.0
+304,31,74.0,2.084188912,1.084188912,6.0,1.0,2.0,14.0,Yes,No,Admitted,Non-organic psychosis,Not recovered,Returned for Follow-up,9.0,0.0,5.0
+305,25,84.0,8.80698152,1.80698152,36.0,7.0,18.0,15.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,13.0,10.0
+306,32,68.0,11.93326489,11.43326489,5.0,0.5,2.0,10.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,2.0,5.0
+307,22,58.0,4.603901437,4.303901437,0.3,0.3,0.0,12.0,Yes,No,Avoided,Brief reactive psychosis,,Withdrew / Lost to Follow-up,5.0,0.0,7.0
+308,37,57.0,2.69835729,2.39835729,0.3,0.3,0.0,14.0,No,Yes,Avoided,Brief reactive psychosis,Unknown,Returned for Follow-up,9.0,0.0,5.0
+309,29,63.0,4.234086242,2.234086242,6.0,2.0,9.0,10.0,No,No,Admitted,Schizophreniform,Recovered,Returned for Follow-up,4.0,6.0,6.0
+310,27,70.0,35.97946612,5.979466119,72.0,30.0,10.0,10.0,Yes,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,5.0,10.0,5.0
+311,48,57.0,9.815195072,5.815195072,276.0,4.0,4.0,16.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,6.0,0.0,10.0
+312,18,68.0,6.150924025,5.650924025,1.0,0.5,17.0,15.0,No,Yes,Avoided,Schizophreniform,Recovered,Returned for Follow-up,5.0,13.0,10.0
+313,33,53.0,13.86036961,11.86036961,14.0,2.0,8.0,10.0,Yes,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,4.0,8.0,6.0
+314,47,41.0,18.9650924,6.965092402,14.0,12.0,2.0,5.0,No,Yes,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,0.0,0.0,5.0
+315,28,45.0,2.534086242,2.234086242,0.3,0.3,0.0,10.0,Yes,No,Admitted,Brief reactive psychosis,,Withdrew / Lost to Follow-up,5.0,0.0,5.0
+316,27,42.0,63.1211499,3.121149897,60.0,60.0,0.0,7.0,Yes,No,Avoided,Non-organic psychosis,,Withdrew / Lost to Follow-up,4.0,0.0,3.0
+317,30,64.0,16.1724846,4.1724846,96.0,12.0,0.0,17.0,Yes,Yes,Admitted,Schizophrenia,Recovered,Returned for Follow-up,12.0,0.0,5.0
+318,24,64.0,5.073921971,4.073921971,11.0,1.0,13.0,10.0,Yes,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,13.0,5.0
+319,23,56.0,5.226899384,2.726899384,4.0,2.5,8.0,10.0,Yes,Yes,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,4.0,4.0,6.0
+320,24,66.0,2.696919918,2.496919918,0.2,0.2,9.0,16.0,Yes,No,Admitted,Non-organic psychosis,Not recovered,Returned for Follow-up,6.0,5.0,10.0
+321,20,74.0,6.369609856,4.369609856,3.0,2.0,17.0,14.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,4.0,17.0,10.0
+323,19,63.0,12.40657084,6.406570842,8.0,6.0,0.0,19.0,Yes,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,9.0,0.0,10.0
+324,28,80.0,5.299794661,2.299794661,8.0,3.0,8.0,20.0,Yes,No,Admitted,Schizophreniform,Recovered,Returned for Follow-up,10.0,3.0,10.0
+327,33,80.0,7.117043121,1.117043121,9.0,6.0,5.0,24.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,14.0,0.0,10.0
+328,37,70.0,6.369609856,4.369609856,8.0,2.0,10.0,12.0,No,No,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,5.0,10.0,7.0
+329,28,106.0,5.620944559,5.420944559,0.2,0.2,6.0,24.0,No,Yes,Admitted,Schizophreniform,Recovered,Returned for Follow-up,14.0,1.0,10.0
+330,44,45.0,36.07802875,6.078028747,36.0,30.0,0.0,12.0,No,No,Admitted,Schizophrenia,Recovered,Returned for Follow-up,7.0,0.0,5.0
+331,40,62.0,3.858316222,2.858316222,6.0,1.0,7.0,9.0,No,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,3.0,6.0,6.0
+332,25,61.0,,,16.0,14.0,0.0,15.0,Yes,Yes,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,0.0,10.0
+333,23,61.0,5.836755647,4.336755647,12.0,1.5,9.0,10.0,Yes,No,Admitted,Brief reactive psychosis,Recovered,Returned for Follow-up,5.0,4.0,5.0
+334,28,87.0,11.7761807,10.7761807,8.0,1.0,6.0,20.0,Yes,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,15.0,1.0,5.0
+336,25,57.0,1.678439425,1.478439425,6.0,0.2,4.0,13.0,No,No,Admitted,Schizophreniform,Unknown,Returned for Follow-up,8.0,3.0,5.0
+337,31,56.0,3.683983573,3.383983573,0.3,0.3,10.0,11.0,No,No,Admitted,Brief reactive psychosis,Recovered,Returned for Follow-up,6.0,7.0,5.0
+338,26,55.0,29.54414784,1.544147844,72.0,28.0,9.0,10.0,No,Yes,Admitted,Schizophrenia,Recovered,Returned for Follow-up,5.0,5.0,5.0
+339,37,83.0,3.036960986,2.036960986,4.0,1.0,1.0,15.0,No,Yes,Admitted,Schizophreniform,,Withdrew / Lost to Follow-up,5.0,0.0,10.0
+341,48,81.0,148.4353183,4.435318275,144.0,144.0,18.0,15.0,No,Yes,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,17.0,10.0
+343,25,54.0,7.492813142,0.492813142,12.0,7.0,3.0,15.0,Yes,No,Admitted,Brief reactive psychosis,Unknown,Returned for Follow-up,5.0,2.0,10.0
+344,22,62.0,2.281314168,1.281314168,24.0,1.0,8.0,15.0,Yes,Yes,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,5.0,7.0,10.0
+345,23,66.0,11.83983573,1.839835729,17.0,10.0,15.0,14.0,No,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,8.0,10.0,6.0
+347,24,54.0,0.922792608,0.722792608,0.5,0.2,8.0,10.0,No,No,Admitted,Brief reactive psychosis,Unknown,Returned for Follow-up,5.0,7.0,5.0
+348,33,62.0,22.02669405,21.02669405,1.0,1.0,3.0,15.0,No,No,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,5.0,0.0,10.0
+349,32,45.0,16.76386037,4.76386037,144.0,12.0,5.0,9.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,4.0,4.0,5.0
+350,26,59.0,22.44558522,1.445585216,28.0,21.0,3.0,12.0,No,No,Avoided,Schizophreniform,Not recovered,Returned for Follow-up,3.0,2.0,9.0
+351,30,46.0,29.05954825,5.059548255,92.0,24.0,0.0,10.0,Yes,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,5.0,0.0,5.0
+353,31,58.0,5.215605749,1.215605749,4.0,4.0,4.0,19.0,No,No,Admitted,Schizophreniform,Recovered,Returned for Follow-up,14.0,0.0,5.0
+354,18,55.0,6.85523614,5.35523614,4.0,1.5,7.0,19.0,No,No,Admitted,Schizophrenia,Recovered,Returned for Follow-up,9.0,2.0,10.0
+356,31,50.0,3.814168378,1.314168378,2.5,1.0,0.0,10.0,No,Yes,Admitted,Schizophrenia,Recovered,Returned for Follow-up,5.0,0.0,5.0
+358,26,99.0,37.70841889,1.708418891,96.0,36.0,18.0,25.0,Yes,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,15.0,13.0,10.0
+359,46,100.0,101.026694,5.026694045,96.0,96.0,15.0,25.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,15.0,10.0,10.0
+360,18,52.0,2.281314168,1.281314168,2.0,1.0,5.0,13.0,No,No,Avoided,Brief reactive psychosis,,Withdrew / Lost to Follow-up,3.0,5.0,10.0
+361,19,52.0,4.102669405,2.102669405,,2.0,16.0,5.0,Yes,No,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,0.0,11.0,5.0
+362,41,73.0,55.4825462,19.4825462,288.0,36.0,13.0,15.0,No,No,Admitted,Schizophrenia,,Deceased,5.0,10.0,10.0
+363,26,60.0,,,36.0,24.0,6.0,14.0,Yes,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,4.0,4.0,10.0
+364,28,91.0,29.95893224,11.95893224,36.0,18.0,17.0,14.0,No,Yes,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,4.0,16.0,10.0
+365,27,58.0,10.28644764,7.786447639,2.5,2.5,16.0,8.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,4.0,12.0,4.0
+366,40,63.0,60.72279261,0.722792608,60.0,60.0,0.0,15.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,0.0,10.0
+367,29,70.0,,,1.0,1.0,5.0,16.0,Yes,No,Admitted,Brief reactive psychosis,Unknown,Returned for Follow-up,6.0,4.0,10.0
+369,40,60.0,4.471252567,1.971252567,24.0,2.5,4.0,13.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,8.0,0.0,5.0
+370,29,67.0,17.6550308,7.655030801,60.0,10.0,19.0,16.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,6.0,15.0,10.0
+371,49,64.0,7.13963039,4.13963039,3.0,3.0,5.0,15.0,No,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,5.0,10.0
+372,23,84.0,19.31827515,3.318275154,40.0,16.0,5.0,20.0,No,Yes,Avoided,Schizophrenia,Recovered,Returned for Follow-up,10.0,4.0,10.0
+373,24,60.0,2.952772074,0.952772074,6.0,2.0,2.0,8.0,No,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,4.0,1.0,4.0
+374,24,45.0,13.32648871,7.326488706,18.0,6.0,4.0,10.0,No,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,4.0,4.0,6.0
+376,24,76.0,1.664271047,0.164271047,1.5,1.5,5.0,21.0,Yes,No,Admitted,Brief reactive psychosis,Not recovered,Returned for Follow-up,11.0,0.0,10.0
+377,29,47.0,13.64271047,1.642710472,,12.0,15.0,13.0,No,No,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,8.0,15.0,5.0
+378,42,62.0,13.02464066,12.02464066,3.0,1.0,4.0,10.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,4.0,5.0
+379,37,46.0,15.3613963,0.361396304,30.0,15.0,1.0,9.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,0.0,1.0,9.0
+380,21,57.0,2.762833676,0.262833676,2.5,2.5,5.0,10.0,Yes,Yes,Avoided,Non-organic psychosis,,Withdrew / Lost to Follow-up,5.0,2.0,5.0
+381,22,80.0,4.694045175,2.694045175,4.0,2.0,5.0,25.0,No,No,Admitted,Schizoaffective,Not recovered,Returned for Follow-up,15.0,0.0,10.0
+382,53,58.0,11.87063655,8.87063655,3.0,3.0,2.0,12.0,No,Yes,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,2.0,0.0,10.0
+383,27,54.0,4.58110883,3.58110883,1.0,1.0,7.0,8.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,3.0,4.0,5.0
+384,37,67.0,35.66529774,20.66529774,18.0,15.0,3.0,16.0,Yes,Yes,Admitted,Schizophrenia,,Withdrew / Lost to Follow-up,10.0,3.0,6.0
+385,18,58.0,3.924024641,2.924024641,2.0,1.0,0.0,15.0,Yes,Yes,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,10.0,0.0,5.0
+386,50,65.0,18.36550308,2.36550308,60.0,16.0,9.0,12.0,No,No,Admitted,Non-organic psychosis,,Withdrew / Lost to Follow-up,7.0,6.0,5.0
+387,42,52.0,5.113963039,3.613963039,2.5,1.5,5.0,11.0,Yes,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,6.0,4.0,5.0
+388,24,60.0,7.529774127,2.529774127,60.0,5.0,16.0,9.0,No,Yes,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,3.0,11.0,6.0
+390,29,62.0,18.17453799,13.17453799,5.0,1.0,16.0,10.0,No,No,Admitted,Brief reactive psychosis,Recovered,Returned for Follow-up,5.0,13.0,5.0
+391,58,62.0,27.1211499,3.121149897,24.0,24.0,5.0,10.0,No,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,1.0,5.0
+393,46,64.0,3.372689938,1.872689938,1.5,1.5,7.0,15.0,No,No,Avoided,Non-organic psychosis,Not recovered,Returned for Follow-up,5.0,7.0,10.0
+394,20,87.0,25.71252567,19.71252567,12.0,6.0,9.0,20.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,14.0,4.0,6.0
+395,51,69.0,5.792607803,2.792607803,5.0,3.0,6.0,12.0,No,Yes,Avoided,Schizophrenia,,Deceased,4.0,2.0,8.0
+396,37,72.0,6.759753593,2.759753593,36.0,4.0,0.0,17.0,No,No,Admitted,Non-organic psychosis,,Withdrew / Lost to Follow-up,7.0,0.0,10.0
+397,27,83.0,22.1724846,4.1724846,36.0,18.0,2.0,24.0,No,Yes,Admitted,Schizophrenia,Unknown,Returned for Follow-up,14.0,2.0,10.0
+399,40,72.0,1.689938398,0.689938398,2.0,1.0,18.0,15.0,No,No,Admitted,Schizophreniform,Recovered,Returned for Follow-up,5.0,14.0,10.0
+400,43,70.0,25.24845996,1.248459959,48.0,24.0,18.0,15.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,17.0,10.0
+401,21,54.0,,,3.5,1.5,6.0,13.0,Yes,No,Avoided,Brief reactive psychosis,,Withdrew / Lost to Follow-up,3.0,2.0,10.0
+402,27,69.0,27.94250513,3.942505133,24.0,24.0,14.0,11.0,No,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,1.0,13.0,10.0
+403,35,66.0,3.281314168,1.281314168,3.0,2.0,11.0,18.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,8.0,11.0,10.0
+404,47,51.0,46.19301848,30.19301848,18.0,16.0,5.0,7.0,No,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,2.0,0.0,5.0
+405,20,70.0,44.275154,38.275154,8.0,6.0,6.0,15.0,Yes,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,3.0,10.0
+406,46,54.0,40.35523614,37.35523614,8.0,3.0,6.0,10.0,Yes,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,6.0,5.0
+407,25,73.0,3.36550308,2.36550308,1.5,1.0,5.0,15.0,Yes,No,Admitted,Non-organic psychosis,,Withdrew / Lost to Follow-up,5.0,0.0,10.0
+408,19,79.0,12.33059548,9.330595483,5.0,3.0,1.0,19.0,Yes,No,Avoided,Schizophrenia,Unknown,Returned for Follow-up,9.0,0.0,10.0
+409,45,66.0,8.149897331,1.149897331,9.0,7.0,0.0,18.0,No,No,Admitted,Schizophreniform,,Withdrew / Lost to Follow-up,8.0,0.0,10.0
+410,30,64.0,162.5831622,12.58316222,150.0,150.0,5.0,15.0,No,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,5.0,5.0,10.0
+411,29,47.0,30.42094456,5.420944559,28.0,25.0,1.0,11.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,6.0,1.0,5.0
+412,24,38.0,18.90349076,8.90349076,11.0,10.0,1.0,11.0,No,No,Avoided,Non-organic psychosis,Not recovered,Returned for Follow-up,1.0,1.0,10.0
+413,52,57.0,15.63449692,13.63449692,24.0,2.0,5.0,12.0,No,No,Admitted,Schizophreniform,Unknown,Returned for Follow-up,7.0,1.0,5.0
+414,23,55.0,18.21560575,17.21560575,5.0,1.0,6.0,8.0,Yes,No,Avoided,Schizophrenia,Not recovered,Returned for Follow-up,3.0,5.0,5.0
+415,28,39.0,3.229979466,0.229979466,6.0,3.0,2.0,8.0,Yes,Yes,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,3.0,2.0,5.0
+416,30,55.0,7.388090349,5.388090349,2.0,2.0,6.0,14.0,No,No,Avoided,Schizophrenia,,Withdrew / Lost to Follow-up,4.0,5.0,10.0
+417,17,92.0,4.675564682,1.675564682,12.0,3.0,23.0,19.0,Yes,No,Admitted,Schizophreniform,,Deceased,9.0,18.0,10.0
+418,30,90.0,4.952772074,0.952772074,5.0,4.0,21.0,20.0,No,No,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,10.0,16.0,10.0
+419,37,79.0,25.2936345,7.293634497,,18.0,10.0,11.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,10.0,6.0
+420,49,62.0,3.194045175,2.694045175,1.0,0.5,3.0,14.0,No,Yes,Avoided,Brief reactive psychosis,,Withdrew / Lost to Follow-up,4.0,2.0,10.0
+421,21,64.0,7.219712526,3.219712526,9.0,4.0,10.0,15.0,No,Yes,Avoided,Non-organic psychosis,Recovered,Returned for Follow-up,5.0,9.0,10.0
+422,17,86.0,,,6.0,2.0,24.0,15.0,Yes,No,Admitted,Schizophrenia,Unknown,Returned for Follow-up,5.0,19.0,10.0
+423,19,53.0,6.905544148,1.905544148,6.0,5.0,9.0,12.0,Yes,No,Avoided,Schizophreniform,,Withdrew / Lost to Follow-up,5.0,9.0,7.0
+424,34,80.0,1.419917864,0.919917864,7.0,0.5,24.0,11.0,No,No,Admitted,Schizophreniform,Not recovered,Returned for Follow-up,5.0,19.0,6.0
+425,39,62.0,16.23819302,4.238193018,18.0,12.0,7.0,10.0,No,Yes,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,7.0,5.0
+426,36,61.0,37.83983573,1.839835729,48.0,36.0,0.0,14.0,No,No,Avoided,Schizophrenia,Recovered,Returned for Follow-up,4.0,0.0,10.0
+427,60,87.0,242.661191,2.661190965,240.0,240.0,5.0,23.0,No,Yes,Admitted,Schizophrenia,Unknown,Returned for Follow-up,13.0,0.0,10.0
+428,52,65.0,36.75564682,0.755646817,48.0,36.0,6.0,15.0,No,No,Admitted,Schizophrenia,Not recovered,Returned for Follow-up,5.0,2.0,10.0

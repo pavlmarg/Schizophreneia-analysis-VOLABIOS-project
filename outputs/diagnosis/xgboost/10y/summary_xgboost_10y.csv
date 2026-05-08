@@ -1,0 +1,2 @@
+Algorithm,Best Parameters,Test ROC-AUC,Test F1 (Macro Avg)
+XGBoost w/ PCA & SMOTE,"{'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 150, 'n_components': 4}",0.825,0.776

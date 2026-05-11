@@ -1,2 +1,2 @@
-Algorithm,Best Parameters,Test ROC-AUC,Test F1 (Macro Avg)
-LightGBM w/ PCA & SMOTE,"{'clf__learning_rate': 0.02, 'clf__max_depth': 4, 'clf__n_estimators': 200, 'pca__n_components': 5}",0.831,0.802
+Algorithm,Parameters,Train ROC-AUC,Test ROC-AUC,Test F1 (Macro Avg)
+LightGBM,"{learning_rate = 0.02, max_depth = 4, n_estimators = 200, pca_n_components = 5}",0.724 ± 0.08,0.831,0.802

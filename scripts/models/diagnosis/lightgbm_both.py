@@ -5,7 +5,7 @@ import lightgbm as lgb
 import shap
 import warnings
 import os
-from sklearn.model_selection import StratifiedKFold, train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from imblearn.pipeline import Pipeline as ImbPipeline
@@ -15,9 +15,8 @@ from sklearn.metrics import roc_auc_score, roc_curve, confusion_matrix, Confusio
 warnings.filterwarnings("ignore", category=UserWarning)
 os.makedirs('outputs', exist_ok=True)
 
-# ==========================================
-# 1. ΦΟΡΤΩΣΗ ΚΑΙ ΚΑΘΑΡΙΣΜΟΣ ΔΕΔΟΜΕΝΩΝ
-# ==========================================
+
+# ΦΟΡΤΩΣΗ ΚΑΙ ΚΑΘΑΡΙΣΜΟΣ ΔΕΔΟΜΕΝΩΝ
 baseline_df = pd.read_csv('data_files/data_processed/csv_files/baseline_simplified_data.csv')
 followup_df = pd.read_csv('data_files/data_processed/csv_files/followup_10y_data.csv')
 
@@ -32,9 +31,8 @@ followup_clean = followup_clean.drop(columns=[c for c in cols_to_drop if c in fo
 
 df = pd.merge(baseline_df, followup_clean, on='person_id', how='inner')
 
-# ==========================================
-# 2. ΠΡΟΕΤΟΙΜΑΣΙΑ TARGET (ΣΤΟΧΟΣ)
-# ==========================================
+
+#  ΠΡΟΕΤΟΙΜΑΣΙΑ TARGET
 def group_diagnosis(diag):
     if pd.isna(diag):
         return np.nan
@@ -46,9 +44,9 @@ def group_diagnosis(diag):
 df['target'] = df['diagnosis'].apply(group_diagnosis)
 df = df.dropna(subset=['target']).copy()
 
-# ==========================================
-# 3. ΟΡΙΣΜΟΣ FEATURES & TRAIN-TEST SPLIT
-# ==========================================
+
+# ΟΡΙΣΜΟΣ FEATURES & TRAIN-TEST SPLIT
+
 CONTINUOUS_FEATURES = [
     'baseline_age', 'DAP_months', 'DUP_months', 'DUI_months', 'DAT_months', 
     'SANS_Total', 'SAPS_Total', 'BPRS_Total', 'BPRS_Positive_Onset', 
@@ -84,41 +82,20 @@ X_train = pd.get_dummies(X_train_clean, columns=CATEGORICAL_FEATURES, drop_first
 X_test = pd.get_dummies(X_test_clean, columns=CATEGORICAL_FEATURES, drop_first=True)
 X_train, X_test = X_train.align(X_test, join='left', axis=1, fill_value=0)
 
-# ==========================================
-# 4. PIPELINE: SCALER -> SMOTE -> PCA -> LIGHTGBM
-# ==========================================
+
+#  PIPELINE: SCALER -> SMOTE -> PCA -> LIGHTGBM
 # Χρησιμοποιούμε την ImbPipeline ώστε το SMOTE να γίνεται μόνο στο training
 pipeline = ImbPipeline([
     ('scaler', StandardScaler()),
-    ('smote', SMOTE(random_state=42)), # Δημιουργία συνθετικών δειγμάτων (67 -> 116)
-    ('pca', PCA(random_state=42)),
-    ('clf', lgb.LGBMClassifier(random_state=10, n_jobs=-1, verbose=-1)) # Το class_weight='balanced' φεύγει γιατί το λύνει το SMOTE
+    ('smote', SMOTE(random_state=42)), 
+    ('pca', PCA(random_state=42, n_components=5)),
+    ('clf', lgb.LGBMClassifier(random_state=42, n_jobs=-1, verbose=-1, learning_rate=0.02, n_estimators=200, max_depth=4)) 
 ])
 
-# Ψάχνουμε ταυτόχρονα το ιδανικό PCA n_components και τα LightGBM parameters
-param_grid = {
-    'pca__n_components': [3, 4, 5, 6],
-    'clf__learning_rate': [0.01, 0.02, 0.05],
-    'clf__n_estimators': [100, 150, 200, 250],
-    'clf__max_depth': [2, 3, 4]
-}
-
-print("Εκτέλεση Grid Search (SMOTE + PCA + LightGBM)...")
-grid_search = GridSearchCV(
-    pipeline, 
-    param_grid, 
-    cv=StratifiedKFold(n_splits=5, shuffle=True, random_state=10), 
-    scoring='f1_macro', 
-    n_jobs=-1
-)
-
-grid_search.fit(X_train, y_train)
-best_model = grid_search.best_estimator_
-
-print(f"\nΒέλτιστες Παράμετροι: {grid_search.best_params_}")
+pipeline.fit(X_train, y_train)
 
 # Προβλέψεις
-y_prob = best_model.predict_proba(X_test)[:, 1]
+y_prob = pipeline.predict_proba(X_test)[:, 1]
 auc_score = roc_auc_score(y_test, y_prob)
 
 # Threshold Tuning
@@ -135,35 +112,33 @@ for thresh in thresholds:
 
 y_pred_optimal = (y_prob >= optimal_threshold).astype(int)
 
-# ==========================================
-# 5. ΓΡΑΦΗΜΑΤΑ ΚΑΙ ΕΞΑΓΩΓΗ
-# ==========================================
+# ΓΡΑΦΗΜΑΤΑ ΚΑΙ ΕΞΑΓΩΓΗ
 fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 fig.suptitle('VOLABIOS: PCA + SMOTE + LightGBM Model', fontsize=14, fontweight='bold')
 
 # Confusion Matrix
 cm = confusion_matrix(y_test, y_pred_optimal)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Other', 'Schizophrenia'])
-disp.plot(ax=axes[0], colorbar=False, cmap='Oranges')
+disp.plot(ax=axes[0], colorbar=False, cmap='Greens')
 axes[0].set_title(f'Confusion Matrix\n(Optimal Threshold: {optimal_threshold:.2f})')
 
 # ROC Curve
 fpr, tpr, _ = roc_curve(y_test, y_prob)
-axes[1].plot(fpr, tpr, color='darkorange', lw=2, label=f'AUC = {auc_score:.3f}')
+axes[1].plot(fpr, tpr, color='darkgreen', lw=2, label=f'AUC = {auc_score:.3f}')
 axes[1].plot([0, 1], [0, 1], 'k--', lw=1, label='Random guessing')
 axes[1].set_xlabel('False Positive Rate')
 axes[1].set_ylabel('True Positive Rate')
 axes[1].set_title('ROC Curve')
 axes[1].legend()
 
-# Feature Importances (ΤΩΡΑ ΕΙΝΑΙ ΤΑ PRINCIPAL COMPONENTS, ΟΧΙ ΟΙ ΜΕΤΑΒΛΗΤΕΣ)
-raw_importances = best_model.named_steps['clf'].booster_.feature_importance(importance_type='gain')
+# Feature Importances 
+raw_importances = pipeline.named_steps['clf'].booster_.feature_importance(importance_type='gain')
 relative_importances = raw_importances / raw_importances.sum()
 pc_names = [f"PC{i+1}" for i in range(len(relative_importances))]
 importance_df = pd.DataFrame({'feature': pc_names, 'importance': relative_importances})
 importance_df = importance_df[importance_df['importance'] > 0].sort_values('importance', ascending=False)
 
-axes[2].barh(importance_df['feature'], importance_df['importance'], color='darkorange')
+axes[2].barh(importance_df['feature'], importance_df['importance'], color='darkgreen')
 axes[2].set_title('Top Principal Components (Drivers)')
 axes[2].set_xlabel('Relative Importance') 
 axes[2].set_xlim(0, 1.0)
@@ -175,19 +150,18 @@ plt.close()
 
 # Εξαγωγή Σύνοψης
 summary = {
-    'Algorithm': 'LightGBM w/ PCA & SMOTE',
-    'Best Parameters': str(grid_search.best_params_),
+    'Algorithm': 'LightGBM',
+    'Parameters': "{learning_rate = 0.02, max_depth = 4, n_estimators = 200, pca_n_components = 5}",
     'Test ROC-AUC': f"{auc_score:.3f}",
     'Test F1 (Macro Avg)': f"{best_macro_f1:.3f}" 
 }
 pd.DataFrame([summary]).to_csv('outputs/summary_pca_lightgbm.csv', index=False)
 
-# ==========================================
-# 6. SHAP ΕΠΕΞΗΓΗΜΑΤΙΚΟΤΗΤΑ ΠΑΝΩ ΣΤΑ PCs
-# ==========================================
-lgbm_model = best_model.named_steps['clf']
-model_scaler = best_model.named_steps['scaler']
-model_pca = best_model.named_steps['pca']
+
+# SHAP ΕΠΕΞΗΓΗΜΑΤΙΚΟΤΗΤΑ ΠΑΝΩ ΣΤΑ Principal Components
+lgbm_model = pipeline.named_steps['clf']
+model_scaler = pipeline.named_steps['scaler']
+model_pca = pipeline.named_steps['pca']
 
 # Transform X_test -> Scaled -> PCA
 X_test_transformed = model_pca.transform(model_scaler.transform(X_test))
@@ -211,31 +185,15 @@ plt.tight_layout()
 plt.savefig('outputs/shap_summary_pca.png', dpi=150, bbox_inches='tight')
 plt.close()
 
-# ==========================================
-# 7. ΤΙ ΚΡΥΒΕΤΑΙ ΠΙΣΩ ΑΠΟ ΤΑ COMPONENTS;
-# ==========================================
-print("\n" + "="*40)
-print("🔍 ΤΙ ΣΗΜΑΙΝΟΥΝ ΤΑ PRINCIPAL COMPONENTS;")
-print("Αυτές είναι οι 3 αρχικές μεταβλητές που επηρεάζουν περισσότερο το κάθε Component:")
-components_matrix = model_pca.components_
-for i, component in enumerate(components_matrix):
-    top_features_idx = np.argsort(np.abs(component))[-3:][::-1]
-    top_features_names = [X_train.columns[idx] for idx in top_features_idx]
-    print(f"PC{i+1}: {', '.join(top_features_names)}")
-print("="*40 + "\n")
-
-# ==========================================
-# 8Β. SHAP FORCE PLOT ΓΙΑ ΤΟΝ ΑΣΘΕΝΗ 0
-# ==========================================
-# Επιλέγουμε τον πρώτο ασθενή (index 0) του Test Set
-patient_idx = 0
+# SHAP FORCE PLOT ΓΙΑ ΕΝΑΝ ΑΣΘΕΝΗ
+patient_idx = 11
 real_person_id = id_test.iloc[patient_idx]
 
 plt.figure(figsize=(12, 4))
 shap.force_plot(
     base_value, 
     shap_values_pos[patient_idx, :], 
-    X_test_transformed_df.iloc[patient_idx, :],  # ΣΗΜΑΝΤΙΚΟ: Χρησιμοποιούμε τα PCA Components
+    X_test_transformed_df.iloc[patient_idx, :],
     matplotlib=True,
     show=False
 )
@@ -243,5 +201,3 @@ shap.force_plot(
 plt.title(f"SHAP Force Plot: PCA Explanation for Person ID {real_person_id}", y=1.4, fontweight='bold')
 plt.savefig(f'outputs/shap_force_plot_patient_{real_person_id}.png', dpi=150, bbox_inches='tight')
 plt.close()
-
-print(f"Το SHAP Force Plot για τον ασθενή {real_person_id} αποθηκεύτηκε επιτυχώς!")

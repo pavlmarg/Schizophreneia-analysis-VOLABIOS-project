@@ -21,8 +21,6 @@ os.makedirs('outputs', exist_ok=True)
 # 1. ΦΟΡΤΩΣΗ ΚΑΙ ΚΑΘΑΡΙΣΜΟΣ ΔΕΔΟΜΕΝΩΝ
 baseline_df = pd.read_csv('data_files/data_processed/csv_files/baseline_simplified_data.csv')
 
-# Προσοχή: Εδώ έλειπε ένα αρχείο στο merge στο προηγούμενο snippet σου. 
-# Υποθέτω δουλεύεις μόνο με το baseline_df τώρα.
 df = baseline_df.copy()
 
 # ΠΡΟΕΤΟΙΜΑΣΙΑ TARGET
@@ -45,31 +43,44 @@ CATEGORICAL_FEATURES = [
     'cannabis_use', 'family_hx_psychosis', 'hospital_admission'
 ]
 
-# 2. DROP ROWS WITH >50% MISSING VALUES
+# 2. DATA SPLIT (70/30 balanced split)
+# Το split γίνεται πλέον ΠΡΙΝ από οποιοδήποτε preprocessing
+df_train, df_test = train_test_split(df, test_size=0.30, stratify=df['target'], random_state=42)
+
+# DROP ROWS WITH >50% MISSING VALUES (Εφαρμογή ξεχωριστά)
 threshold = int((len(CONTINUOUS_FEATURES) + len(CATEGORICAL_FEATURES)) * 0.5)
-df = df.dropna(thresh=threshold, subset=CONTINUOUS_FEATURES + CATEGORICAL_FEATURES).copy()
+df_train = df_train.dropna(thresh=threshold, subset=CONTINUOUS_FEATURES + CATEGORICAL_FEATURES).copy()
+df_test = df_test.dropna(thresh=threshold, subset=CONTINUOUS_FEATURES + CATEGORICAL_FEATURES).copy()
 
-# 3. RANDOM FOREST IMPUTATION
-X_cont = df[CONTINUOUS_FEATURES]
-X_cat = df[CATEGORICAL_FEATURES]
-X_cat_encoded = pd.get_dummies(X_cat, drop_first=True)
+y_train = df_train['target']
+id_train = df_train['person_id']
+X_train_cont = df_train[CONTINUOUS_FEATURES]
+X_train_cat = df_train[CATEGORICAL_FEATURES]
 
+y_test = df_test['target']
+id_test = df_test['person_id']
+X_test_cont = df_test[CONTINUOUS_FEATURES]
+X_test_cat = df_test[CATEGORICAL_FEATURES]
+
+# ONE-HOT ENCODING (Εκπαίδευση στο train, προσαρμογή του test)
+X_train_cat_encoded = pd.get_dummies(X_train_cat, drop_first=True)
+X_test_cat_encoded = pd.get_dummies(X_test_cat, drop_first=True)
+X_test_cat_encoded = X_test_cat_encoded.reindex(columns=X_train_cat_encoded.columns, fill_value=0)
+
+NEW_CAT_FEATURES = list(X_train_cat_encoded.columns)
+
+# 3. RANDOM FOREST IMPUTATION (Fit στο train, transform σε train και test)
 rf_imputer_cont = IterativeImputer(estimator=RandomForestRegressor(n_estimators=50, random_state=42), random_state=42)
-df[CONTINUOUS_FEATURES] = rf_imputer_cont.fit_transform(X_cont)
+X_train_cont_imp = pd.DataFrame(rf_imputer_cont.fit_transform(X_train_cont), columns=CONTINUOUS_FEATURES, index=X_train_cont.index)
+X_test_cont_imp = pd.DataFrame(rf_imputer_cont.transform(X_test_cont), columns=CONTINUOUS_FEATURES, index=X_test_cont.index)
 
 rf_imputer_cat = IterativeImputer(estimator=RandomForestClassifier(n_estimators=50, random_state=42), random_state=42)
-df[X_cat_encoded.columns] = rf_imputer_cat.fit_transform(X_cat_encoded)
-df = df.drop(columns=CATEGORICAL_FEATURES) 
-NEW_CAT_FEATURES = list(X_cat_encoded.columns)
+X_train_cat_imp = pd.DataFrame(rf_imputer_cat.fit_transform(X_train_cat_encoded), columns=NEW_CAT_FEATURES, index=X_train_cat_encoded.index)
+X_test_cat_imp = pd.DataFrame(rf_imputer_cat.transform(X_test_cat_encoded), columns=NEW_CAT_FEATURES, index=X_test_cat_encoded.index)
 
-# 4. DATA SPLIT (70/30 balanced split)
-X_raw = df[CONTINUOUS_FEATURES + NEW_CAT_FEATURES]
-y = df['target']
-patient_ids = df['person_id']
+X_train = pd.concat([X_train_cont_imp, X_train_cat_imp], axis=1)
+X_test = pd.concat([X_test_cont_imp, X_test_cat_imp], axis=1)
 
-X_train, X_test, y_train, y_test, id_train, id_test = train_test_split(
-    X_raw, y, patient_ids, test_size=0.30, stratify=y, random_state=42
-)
 
 # 5. FEATURE SELECTION
 # Stage A: Filter Methods
@@ -103,7 +114,7 @@ X_train_final = X_train_filtered[final_features]
 X_test_final = X_test_filtered[final_features]
 
 # ---------------------------------------------------------
-# 6. MODEL EVALUATION VIA 5-FOLD CV (Added to match Paper Table 2)
+# 6. MODEL EVALUATION VIA 5-FOLD CV 
 # ---------------------------------------------------------
 cv_auc_scores = []
 cv_f1_scores = []
@@ -122,7 +133,7 @@ for train_idx, val_idx in skf.split(X_train_final, y_train):
     X_cv_train_scaled = scaler_cv.fit_transform(X_cv_train_smote)
     X_cv_val_scaled = scaler_cv.transform(X_cv_val)
     
-    clf_cv = xgb.XGBClassifier(random_state=42, n_jobs=-1, eval_metric='logloss', learning_rate=0.03, n_estimators=200, max_depth=3)
+    clf_cv = xgb.XGBClassifier(random_state=42, n_jobs=-1, eval_metric='logloss', learning_rate=0.03, n_estimators=100, max_depth=2)
     clf_cv.fit(X_cv_train_scaled, y_cv_train_smote)
     
     # Assuming optimal threshold around 0.5 for standard CV reporting, or optimize per fold
@@ -145,7 +156,7 @@ scaler = MinMaxScaler()
 X_train_scaled = pd.DataFrame(scaler.fit_transform(X_train_smote), columns=final_features)
 X_test_scaled = pd.DataFrame(scaler.transform(X_test_final), columns=final_features)
 
-clf = xgb.XGBClassifier(random_state=42, n_jobs=-1, eval_metric='logloss', learning_rate=0.1, n_estimators=250, max_depth=2)
+clf = xgb.XGBClassifier(random_state=42, n_jobs=-1, eval_metric='logloss', learning_rate=0.03, n_estimators=150, max_depth=3)
 clf.fit(X_train_scaled, y_train_smote)
 
 # 8. EVALUATION (Unseen Test Set)
@@ -229,14 +240,14 @@ plt.close()
 patient_idx = 11
 real_person_id = id_test.iloc[patient_idx]
 
-plt.figure(figsize=(12, 4))
-shap.force_plot(
+# Φτιάχνουμε το plot (χωρίς το matplotlib=True)
+force_plot_html = shap.force_plot(
     base_value, 
     shap_values_pos[patient_idx, :], 
     X_test_scaled.iloc[patient_idx, :], 
-    matplotlib=True,
-    show=False
+    link="logit" 
 )
-plt.title(f"SHAP Force Plot: Explanation for Person ID {real_person_id}", y=1.4, fontweight='bold')
-plt.savefig(f'outputs/shap_force_plot_patient_{real_person_id}_paper_xgboost.png', dpi=150, bbox_inches='tight')
-plt.close()
+
+# Το σώζουμε ως αρχείο ιστοσελίδας
+filepath = f'outputs/shap_force_plot_patient_{real_person_id}.html'
+shap.save_html(filepath, force_plot_html)

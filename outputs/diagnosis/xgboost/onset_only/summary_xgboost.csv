@@ -1,0 +1,2 @@
+Algorithm,Parameters,CV ROC-AUC,CV F1 (Macro Avg),Test ROC-AUC,Test F1 (Macro Avg),Features Selected
+XGBoost (Paper Framework),"{learning_rate = 0.03, max_depth = 2, n_estimators = 100}",0.819,0.739,0.785,0.743,4

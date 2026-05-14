@@ -1,2 +1,2 @@
 Algorithm,Parameters,CV ROC-AUC,CV F1 (Macro Avg),Test ROC-AUC,Test F1 (Macro Avg),Features Selected
-LightGBM,"{learning_rate = 0.05, max_depth = 4, n_estimators = 200}",0.809,0.739,0.786,0.735,4
+LightGBM,"{learning_rate = 0.03, max_depth = 2, n_estimators = 100}",0.806,0.726,0.743,0.721,4

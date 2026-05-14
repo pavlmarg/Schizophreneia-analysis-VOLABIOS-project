@@ -18,7 +18,6 @@ from sklearn.metrics import roc_auc_score, roc_curve, confusion_matrix, Confusio
 warnings.filterwarnings("ignore")
 os.makedirs('outputs', exist_ok=True)
 
-# LOAD DATA & PREPARE TARGET
 baseline_df = pd.read_csv('data_files/data_processed/csv_files/baseline_simplified_data.csv')
 
 def group_diagnosis(diag):
@@ -39,35 +38,39 @@ CATEGORICAL_FEATURES = [
     'cannabis_use', 'family_hx_psychosis', 'hospital_admission'
 ]
 
-# DROP ROWS WITH >40% MISSING VALUES
+df_train, df_test = train_test_split(df, test_size=0.3, stratify=df['target'], random_state=42)
+
 threshold = int((len(CONTINUOUS_FEATURES) + len(CATEGORICAL_FEATURES)) * 0.4)
-df = df.dropna(thresh=threshold, subset=CONTINUOUS_FEATURES + CATEGORICAL_FEATURES).copy()
+df_train = df_train.dropna(thresh=threshold, subset=CONTINUOUS_FEATURES + CATEGORICAL_FEATURES).copy()
+df_test = df_test.dropna(thresh=threshold, subset=CONTINUOUS_FEATURES + CATEGORICAL_FEATURES).copy()
 
-# RANDOM FOREST IMPUTATION
-X_cont = df[CONTINUOUS_FEATURES]
-X_cat = df[CATEGORICAL_FEATURES]
+y_train = df_train['target']
+id_train = df_train['person_id']
+X_train_cont = df_train[CONTINUOUS_FEATURES]
+X_train_cat = df_train[CATEGORICAL_FEATURES]
 
-X_cat_encoded = pd.get_dummies(X_cat, drop_first=True)
+y_test = df_test['target']
+id_test = df_test['person_id']
+X_test_cont = df_test[CONTINUOUS_FEATURES]
+X_test_cat = df_test[CATEGORICAL_FEATURES]
+
+X_train_cat_encoded = pd.get_dummies(X_train_cat, drop_first=True)
+X_test_cat_encoded = pd.get_dummies(X_test_cat, drop_first=True)
+X_test_cat_encoded = X_test_cat_encoded.reindex(columns=X_train_cat_encoded.columns, fill_value=0)
+
+NEW_CAT_FEATURES = list(X_train_cat_encoded.columns)
 
 rf_imputer_cont = IterativeImputer(estimator=RandomForestRegressor(n_estimators=50, random_state=42), random_state=42)
-df[CONTINUOUS_FEATURES] = rf_imputer_cont.fit_transform(X_cont)
+X_train_cont_imp = pd.DataFrame(rf_imputer_cont.fit_transform(X_train_cont), columns=CONTINUOUS_FEATURES, index=X_train_cont.index)
+X_test_cont_imp = pd.DataFrame(rf_imputer_cont.transform(X_test_cont), columns=CONTINUOUS_FEATURES, index=X_test_cont.index)
 
 rf_imputer_cat = IterativeImputer(estimator=RandomForestClassifier(n_estimators=50, random_state=42), random_state=42)
-df[X_cat_encoded.columns] = rf_imputer_cat.fit_transform(X_cat_encoded)
-df = df.drop(columns=CATEGORICAL_FEATURES) 
-NEW_CAT_FEATURES = list(X_cat_encoded.columns)
+X_train_cat_imp = pd.DataFrame(rf_imputer_cat.fit_transform(X_train_cat_encoded), columns=NEW_CAT_FEATURES, index=X_train_cat_encoded.index)
+X_test_cat_imp = pd.DataFrame(rf_imputer_cat.transform(X_test_cat_encoded), columns=NEW_CAT_FEATURES, index=X_test_cat_encoded.index)
 
-# 4. DATA SPLIT (70/30)
-X_raw = df[CONTINUOUS_FEATURES + NEW_CAT_FEATURES]
-y = df['target']
-patient_ids = df['person_id']
+X_train = pd.concat([X_train_cont_imp, X_train_cat_imp], axis=1)
+X_test = pd.concat([X_test_cont_imp, X_test_cat_imp], axis=1)
 
-X_train, X_test, y_train, y_test, id_train, id_test = train_test_split(
-    X_raw, y, patient_ids, test_size=0.3, stratify=y, random_state=42
-)
-
-# 5. FEATURE SELECTION (Restricted to Training Set)
-# Stage A: Filter Methods
 f_stats, p_values_cont = f_classif(X_train[CONTINUOUS_FEATURES], y_train)
 selected_cont = [CONTINUOUS_FEATURES[i] for i in range(len(CONTINUOUS_FEATURES)) if p_values_cont[i] < 0.2]
 
@@ -80,7 +83,6 @@ filtered_features = selected_cont + selected_cat
 X_train_filtered = X_train[filtered_features]
 X_test_filtered = X_test[filtered_features]
 
-# Stage B: Sequential Forward Selection with 5-Fold CV
 lgbm_base = lgb.LGBMClassifier(random_state=42, n_jobs=-1, verbose=-1)
 cv_sfs = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
@@ -97,8 +99,6 @@ final_features = list(X_train_filtered.columns[sfs.get_support()])
 X_train_final = X_train_filtered[final_features]
 X_test_final = X_test_filtered[final_features]
 
-
-# MODEL EVALUATION WITH 5-FOLD CV 
 cv_auc_scores = []
 cv_f1_scores = []
 skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
@@ -107,16 +107,14 @@ for train_idx, val_idx in skf.split(X_train_final, y_train):
     X_cv_train, X_cv_val = X_train_final.iloc[train_idx], X_train_final.iloc[val_idx]
     y_cv_train, y_cv_val = y_train.iloc[train_idx], y_train.iloc[val_idx]
     
-    # SMOTE inside the fold to prevent data leakage
     smote_cv = SMOTE(random_state=42)
     X_cv_train_smote, y_cv_train_smote = smote_cv.fit_resample(X_cv_train, y_cv_train)
     
-    # Scale inside the fold
     scaler_cv = MinMaxScaler()
     X_cv_train_scaled = scaler_cv.fit_transform(X_cv_train_smote)
     X_cv_val_scaled = scaler_cv.transform(X_cv_val)
     
-    clf_cv = lgb.LGBMClassifier(random_state=42, n_jobs=-1, verbose=-1, learning_rate=0.01, n_estimators=150, max_depth=3)
+    clf_cv = lgb.LGBMClassifier(random_state=42, n_jobs=-1, verbose=-1, learning_rate=0.03, n_estimators=500, max_depth=2)
     clf_cv.fit(X_cv_train_scaled, y_cv_train_smote)
     
     cv_probs = clf_cv.predict_proba(X_cv_val_scaled)[:, 1]
@@ -128,7 +126,6 @@ for train_idx, val_idx in skf.split(X_train_final, y_train):
 mean_cv_auc = np.mean(cv_auc_scores)
 mean_cv_f1 = np.mean(cv_f1_scores)
 
-# FINAL MODEL TRAINING 
 smote = SMOTE(random_state=42)
 X_train_smote, y_train_smote = smote.fit_resample(X_train_final, y_train)
 
@@ -139,7 +136,6 @@ X_test_scaled = pd.DataFrame(scaler.transform(X_test_final), columns=final_featu
 clf = lgb.LGBMClassifier(random_state=42, n_jobs=-1, verbose=-1, learning_rate=0.05, n_estimators=200, max_depth=4)
 clf.fit(X_train_scaled, y_train_smote)
 
-# EVALUATION 
 y_prob = clf.predict_proba(X_test_scaled)[:, 1]
 test_auc_score = roc_auc_score(y_test, y_prob)
 
@@ -156,7 +152,6 @@ for thresh in thresholds:
 
 y_pred_optimal = (y_prob >= optimal_threshold).astype(int)
 
-# PLOTS
 fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 fig.suptitle('LightGBM Model (Paper Methodology)', fontsize=14, fontweight='bold')
 
@@ -188,7 +183,6 @@ plt.tight_layout()
 plt.savefig('outputs/master_diagnosis_paper_lightgbm.png', dpi=150, bbox_inches='tight')
 plt.close()
 
-# SUMMARY
 summary = {
     'Algorithm': 'LightGBM',
     'Parameters': "{learning_rate = 0.05, max_depth = 4, n_estimators = 200}",
@@ -200,7 +194,6 @@ summary = {
 }
 pd.DataFrame([summary]).to_csv('outputs/summary_paper_lightgbm.csv', index=False)
 
-# SHAP
 explainer = shap.TreeExplainer(clf)
 shap_values = explainer.shap_values(X_test_scaled)
 
@@ -216,24 +209,19 @@ plt.tight_layout()
 plt.savefig('outputs/shap_summary_paper.png', dpi=150, bbox_inches='tight')
 plt.close()
 
-
-# Force Plots
 patient_idx = 11
 real_person_id = id_test.iloc[patient_idx]
-
 
 base_value = explainer.expected_value
 if isinstance(base_value, (list, np.ndarray)):
     base_value = base_value[1] if isinstance(explainer.expected_value, list) else base_value[0]
 
-plt.figure(figsize=(12, 4))
-shap.force_plot(
+force_plot_html = shap.force_plot(
     base_value, 
     shap_values_pos[patient_idx, :], 
     X_test_scaled.iloc[patient_idx, :], 
-    matplotlib=True,
-    show=False
+    link="logit" 
 )
-plt.title(f"SHAP Force Plot: Explanation for Person ID {real_person_id}", y=1.4, fontweight='bold')
-plt.savefig(f'outputs/shap_force_plot_patient_{real_person_id}_paper_lightgbm.png', dpi=150, bbox_inches='tight')
-plt.close()
+
+filepath = f'outputs/shap_force_plot_patient_{real_person_id}.html'
+shap.save_html(filepath, force_plot_html)

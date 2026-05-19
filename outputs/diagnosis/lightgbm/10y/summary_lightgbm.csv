@@ -1,2 +1,0 @@
-Algorithm,Parameters,Test ROC-AUC,Test F1 (Macro Avg)
-LightGBM,"{learning_rate = 0.02, max_depth = 4, n_estimators = 200}",0.823,0.776

@@ -1,2 +1,0 @@
-Algorithm,CV ROC-AUC,Test ROC-AUC,Clinical Threshold,Not Recovered Detection Rate,Optimized Test F1
-Random Forest (Class-Balanced & Constrained),0.590 ± 0.083,0.591,0.604,95.5%,0.375

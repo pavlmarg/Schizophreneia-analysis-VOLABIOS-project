@@ -1,2 +1,2 @@
-Algorithm,Parameters,CV ROC-AUC,CV F1,CV Precision,CV Recall,Test ROC-AUC,Test F1,Test Precision,Test Recall,Features Selected
-XGBoost,"{learning_rate = 0.03, max_depth = 3, n_estimators = 150}",0.823,0.768,0.777,0.766,0.785,0.718,0.719,0.717,4
+Algorithm,Parameters,Mean AUC,Std AUC,Mean F1,Std F1,Mean Precision,Std Precision,Mean Recall,Std Recall,N Folds
+XGBoost,Optuna-tuned per fold,0.777,0.053,0.686,0.056,0.693,0.055,0.689,0.056,25

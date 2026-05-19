@@ -1,2 +1,2 @@
-Algorithm,Parameters,CV ROC-AUC,CV F1,CV Precision,CV Recall,Test ROC-AUC,Test F1,Test Precision,Test Recall,Features Selected
-LightGBM,"{learning_rate = 0.03, max_depth = 2, n_estimators = 150}",0.804,0.756,0.771,0.757,0.778,0.705,0.708,0.704,4
+Algorithm,Parameters,Mean AUC,Std AUC,Mean F1,Std F1,Mean Precision,Std Precision,Mean Recall,Std Recall,N Folds
+LightGBM,Optuna-tuned per fold,0.769,0.062,0.703,0.058,0.704,0.057,0.707,0.057,25

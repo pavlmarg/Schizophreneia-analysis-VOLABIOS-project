@@ -1,0 +1,13 @@
+feature,selection_count,selection_rate
+DAP_months,22,0.88
+BPRS_Positive_Onset,17,0.68
+DUP_months,16,0.64
+DAT_months,14,0.56
+hospital_admission_Avoided,12,0.48
+DUI_months,11,0.44
+SANS_Total,9,0.36
+family_hx_psychosis_Yes,7,0.28
+BPRS_Total,2,0.08
+SAPS_Total,2,0.08
+baseline_age,1,0.04
+BPRS_Negative_Onset,1,0.04
